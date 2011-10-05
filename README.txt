@@ -1,5 +1,5 @@
 
-                        S B M L P a c k a g e . cls
+			S B M L P k g S p e c . cls
 
       A LaTeX class for SBML Level 3 package specification documents
 
@@ -10,12 +10,12 @@
 
                             mhucka@caltech.edu
 
-The SBMLPackage class for LaTeX provides a standard format for authoring
+The SBMLPkgSpec class for LaTeX provides a standard format for authoring
 SBML Level 3 package specification documents.  A user's guide to
-SBMLPackage is available in the file titled sbmlpackage-style-doc.pdf (PDF)
+SBMLPkgSpec is available in the file titled sbmlpackage-style-doc.pdf (PDF)
 and sbmlpackage-style-doc.tex (LaTeX source).
 
-Please report problems you encounter with SBMLPackage.  You can contact the
+Please report problems you encounter with SBMLPkgSpec.  You can contact the
 author directly, at the email address given above, or you can file a bug
 report using the tracker at http://sbml.org/issue-tracker .
 
