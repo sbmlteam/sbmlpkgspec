@@ -1,0 +1,12 @@
+                SBMLPackage.cls was primarily developed by
+
+                           Michael Hucka, Ph.D.
+                    Computing and Mathematical Sciences
+                    California Institute of Technology
+                             Pasadena, CA, USA
+
+       For more information about SBML or SBMLPackage.cls, contact:
+
+                               The SBML Team
+                           http://www.sbml.org/
+                       mailto:sbml-team@caltech.edu
