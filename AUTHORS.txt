@@ -1,11 +1,11 @@
-                SBMLPackage.cls was primarily developed by
+                SBMLPkgSpec.cls was primarily developed by
 
                            Michael Hucka, Ph.D.
                     Computing and Mathematical Sciences
                     California Institute of Technology
                              Pasadena, CA, USA
 
-       For more information about SBML or SBMLPackage.cls, contact:
+       For more information about SBML or SBMLPkgSpec.cls, contact:
 
                                The SBML Team
                            http://www.sbml.org/
