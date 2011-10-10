@@ -85,6 +85,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{wasysym}
 \RequirePackage{enumitem}
+\RequirePackage{accsupp}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
@@ -317,9 +318,15 @@
 \newcommand{\mailto}[1]{\link{mailto:#1}{#1}}
 
 % 'lineno' package adjustments.
+% The BeginAccSupp business causes the line numbers to be ignored for
+% copy-paste operations in the PDF output
 
 \setlength{\linenumbersep}{2.2em}
-\renewcommand{\thelinenumber}{\textcolor{mediumgray}{\parbox[b][\height+1.5pt][c]{10pt}{\arabic{linenumber}}}}
+\renewcommand{\thelinenumber}{%
+  \BeginAccSupp{ActualText={}}%
+  \textcolor{mediumgray}{\parbox[b][\height+1.5pt][c]{10pt}{\arabic{linenumber}}}%
+  \EndAccSupp{}%
+}
 
 % 'booktabs' package adjustments.
 
