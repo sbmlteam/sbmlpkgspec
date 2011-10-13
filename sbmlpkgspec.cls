@@ -809,6 +809,7 @@
 \newcommand{\primtypeNC}[1]{\literalFontNC{#1}} % same, but without coloring
 \newcommand{\token}[1]{\literalFont{#1}}    % everything else
 \newcommand{\val}[1]{``\token{#1}''}        % a value in XML
+\newcommand{\uri}[1]{``\token{#1}''}
 
 % Macros used for defining validation rules.
 % First, preliminary internal macros.
