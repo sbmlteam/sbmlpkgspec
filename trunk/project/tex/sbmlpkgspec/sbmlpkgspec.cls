@@ -274,7 +274,7 @@
 \definecolor{lightgray}{gray}{0.8}
 \definecolor{mediumgray}{gray}{0.5}
 \definecolor{darkgray}{gray}{0.3}
-\definecolor{almostblack}{gray}{0.20}
+\definecolor{almostblack}{gray}{0.22}
 \definecolor{lightyellow}{rgb}{0.995,0.97,0.93}
 \definecolor{darkblue}{rgb}{0.1,0.4,0.55}
 \definecolor{mediumgreen}{rgb}{0.1,0.6,0.3}
