@@ -338,13 +338,13 @@ figures and tables.
   \label{ref-commands}
 \end{table}
 
-Finally, in the case of long tables, readability is often enhanced by
-adding a background color to every other row.  Once again, \sbmlpkg
-preloads a \latex package (in this case, \texttt{xcolor} with the
-\texttt{[table]} option) that provides a convenient facility for
-automatically coloring alternate rows in a table.  Although many variations
-are possible, for consistency between SBML package specification documents,
-I recommend using one in particular:
+In the case of long tables, readability is often enhanced by adding a
+background color to every other row.  Once again, \sbmlpkg preloads a
+\latex package (in this case, \texttt{xcolor} with the \texttt{[table]}
+option) that provides a convenient facility for automatically coloring
+alternate rows in a table.  Although many variations are possible, for
+consistency between SBML package specification documents, I recommend using
+one in particular:
 
 \begin{example}
 \rowcolors{2}{sbmlrowgray}{}
@@ -465,9 +465,9 @@ names.
     \texttt{darkgray}		& \drawcol{darkgray}		& red = 0.3	& blue = 0.3	& green = 0.3 \\
     \texttt{almostblack}	& \drawcol{almostblack}		& red = 0.22	& blue = 0.22	& green = 0.22 \\
     \texttt{darkblue}		& \drawcol{darkblue}		& red = 0.1	& blue = 0.4	& green = 0.55 \\
+    \texttt{mediumgreen}	& \drawcol{mediumgreen}		& red = 0.1	& blue = 0.6	& green = 0.3 \\
     \texttt{lightyellow}	& \drawcol{lightyellow}		& red = 0.98	& blue = 0.94	& green = 0.7 \\
     \texttt{verylightyellow}	& \drawcol{verylightyellow}	& red = 0.97	& blue = 0.95	& green = 0.85 \\
-    \texttt{mediumgreen}	& \drawcol{mediumgreen}		& red = 0.1	& blue = 0.6	& green = 0.3 \\
     \bottomrule
   \end{edtable}
   \caption{Color names defined by \sbmlpkg.  These names may be used in
@@ -483,9 +483,9 @@ specification document, and still others are colors that were used in past
 SBML documentation and are carried over in case they prove useful again in
 the future.
 
-When a specification document is a revision of a previous document, it is
-the convention in SBML documentation to indicate text changes by coloring
-them in red.  For this purpose, \sbmlpkg defines a command and an
+When \notice a specification document is a revision of a previous document,
+it is the convention in SBML documentation to indicate text changes by
+coloring them in red.  For this purpose, \sbmlpkg defines a command and an
 environment.  The command \mbox{\texttt{\textbackslash
     changed\{}\emph{text}\texttt{\}}} causes \emph{text} to be written in
 red (or more precisely, the color defined by \cmd{sbmlchangedcolor}, which
@@ -599,24 +599,24 @@ is useful to make all mentions of the class name be hyperlinks to the class
 definition in the document.  To this end, \sbmlpkg provides commands that
 can be used to create new \latex commands to define hyperlinked name
 references.  The purpose of these commands is to let package authors define
-commands of the form \cmd{ObjectName} that print the name
-\texttt{ObjectName} and simultaneously make it a hyperlink to the sections
-in the document where \textsf{\textbf{ObjectName}} is defined.  They are
-best used conjunction with \latex's \cmd{newcommand} command:
+commands of the form \cmd{\emph{ObjectName}} that print the name of the
+class and simultaneously make it a hyperlink to the sections in the
+document where \textsf{\textbf{ObjectName}} is defined.  They are best used
+conjunction with \latex's \cmd{newcommand} command:
 
 \begin{description}[font=\normalfont\ttfamily,style=nextline]
 
 \item[\textbackslash defRef\{\emph{name}\}\{\emph{section}\}] Create a
   hyperlinked reference to the section labeled \emph{section} and call it
-  \emph{name}.  The reference appears at the point in the text where the
-  \texttt{\textbackslash defRef} command is invoked.  This command is
+  \emph{name}.  The reference is inserted at the point in the text where
+  the \texttt{\textbackslash defRef} command is invoked.  This command is
   intended for references to regular (not abstract) classes; see the next
   command for abstract classes.
 
 \item[\textbackslash absDefRef\{\emph{name}\}\{\emph{section}\}] Create a
   hyperlinked reference to the section labeled \emph{section} and call it
-  \emph{name}.  The reference appears at the point in the text where the
-  \texttt{\textbackslash defRef} command is invoked.  This command is
+  \emph{name}.  The reference is inserted at the point in the text where
+  the \texttt{\textbackslash defRef} command is invoked.  This command is
   intended for references to abstract classes; see the previous command for
   the corresponding command for non-abstract classes.
 
@@ -637,11 +637,11 @@ defined using \latex's \cmd{label} command at the beginning of each section
 where the corresponding objects are defined.  (The command \cmd{xspace} is
 discussed in \sect{included-classes}.)
 
-Sometimes it is desirable to write the names of object classes without
-introducing hyperlinks.  A common situation is when mentioning the names of
-the object classes or types in section headings.  In these situations,
-instead of using the \cmd{ObjectName} commands, you may use the following
-commands provided by \sbmlpkg:
+Sometimes \notice it is desirable to write the names of object classes
+without introducing hyperlinks.  A common situation is when mentioning the
+names of the object classes or types in section headings.  In these
+situations, instead of using the \cmd{ObjectName} commands, you may use the
+following commands provided by \sbmlpkg:
 
 \begin{description}[font=\normalfont\ttfamily,style=nextline]
 
@@ -680,10 +680,9 @@ document, package authors should use the \cmd{primtype} and
   where \emph{type} is one of the following names:
 
   \begin{center}\ttfamily
-    \begin{edtable}{tabular}{llll}
-      boolean	& int		 	& SId	 	& UnitSId\\
-      double	& positiveInteger	& SIdRef	& UnitSIdRef\\
-      ID	& SBOTerm		& string \\
+    \begin{edtable}{tabular}{llllll}
+      boolean	& ID	& positiveInteger & SId  	& string	& UnitSIdRef\\
+      double	& int	& SBOTerm	  & SIdRef	& UnitSId \\
     \end{edtable}
   \end{center}
 
@@ -701,11 +700,10 @@ document, package authors should use the \cmd{primtype} and
 
 \end{description}
 
-For example, the command sequence ``\mbox{\texttt{\textbackslash
-    primtype\{SId\}}}'' written somewhere in the body of a document
-produces ``\primtype{SId}'' in the formatted output.   On the other hand,
-the following illustrates how to write the name of a type in a section
-heading: 
+For example, the sequence ``\mbox{\texttt{\textbackslash
+    primtype\{SId\}}}'' written somewhere in the body of a document will
+produce ``\primtype{SId}'' in the formatted output; by contrast, the
+following illustrates how to write a type name in a section heading:
 
 \begin{example}
 \subsection{This is the documentation for \primtypeNC{MySpecialSId}}
@@ -727,6 +725,13 @@ way:
   as attribute names.  Do not use this to format text with embedded spaces;
   instead, use multiple \texttt{\textbackslash token} commands separated by
   spaces.
+
+\item[\textbackslash tokenNC\{\emph{text}\}] Like \texttt{\textbackslash
+    token}, but does not force the color of the text to be black.  The main
+  use of this variant of the command is when writing the names of primitive
+  types in the arguments to \latex sectioning commands (e.g., \cmd{section}
+  and the like), to avoid the change in color that would otherwise occur in
+  the document's table of contents.
 
 \item[\textbackslash val\{\emph{text}\}] Format the value of an attribute.
   This is essentially \cmd{token} but surrounded by double quotes.
@@ -751,10 +756,10 @@ will result in the following formatted output:
 \token{attrib1}=\val{10}
 \end{center}
 
-Note that the command \cmd{token} and others above are only meant to be
-used for single in-text mentions of tokens and XML attribute-value pairs.
-They are not suitable for longer content; for those cases, use the
-\texttt{example} environment described in \sect{example-env}.
+The command \cmd{token} and others above are only meant for single in-text
+mentions of tokens and XML attribute-value pairs.  They are not suitable
+for longer content; for those cases, use the \texttt{example} environment
+(\sect{example-env}).
 
 
 \subsection{Line numbers}
@@ -793,17 +798,16 @@ appear below in other sections.
 \subsection{SBML validation rules}
 \label{validation-rules}
 
-A convention developed while writing the core SBML specification documents
-is to define validation and consistency rules that must or should be
-satisfied in order for a document to conform to the specification.  SBML
-package specifications should likewise follow this convetion and define
-their own validation and consistency rules.  The convention identifies
-different degrees of rule strictness.  Formally, the differences are
-expressed in the statement of a rule: either a rule states that a condition
-\emph{must} be true, or a rule states that it \emph{should} be true.  Rules
-of the former kind are strict SBML validation rules---a model encoded in
-SBML must conform to all of them in order to be considered valid.  Rules of
-the latter kind are consistency rules.
+A convention developed for the main SBML specification documents is to
+define validation and consistency rules that must or should be satisfied by
+documents that conform to the specification.  SBML package specifications
+should likewise define their own validation and consistency rules.  The
+SBML convention identifies different degrees of strictness.  The
+differences are expressed in the statement of a rule: either a rule states
+a condition \emph{must} be true, or a rule states that it \emph{should} be
+true.  Rules of the former kind are SBML validation rules---a model encoded
+in SBML must conform to all of them in order to be considered valid.  Rules
+of the latter kind are consistency rules.
 
 To help highlight these differences, the SBML specification documents and
 \sbmlpkg provide commands to format the three kinds of rules, with three
@@ -812,9 +816,9 @@ different symbols:
 \begin{description}
 
 \item[\hspace*{6.5pt}\vSymbol\vsp] A \vSymbolName indicates a
-  \emph{requirement} for SBML conformance. If a model does not follow this
-  rule, it does not conform to the specification.  (Mnemonic intention
-  behind the choice of symbol: ``This must be checked.'')
+  \emph{requirement} for conformance. If a model fails to follow this rule,
+  it does not conform to the specification.  (Mnemonic intention behind the
+  choice of symbol: ``This must be checked.'')
 
 \item[\hspace*{6.5pt}\cSymbol\csp] A \cSymbolName indicates a
   \emph{recommendation} for model consistency.  If a model does not follow
@@ -849,6 +853,36 @@ specifications documents:
 
 \end{description}
 
+
+\subsection{Document flags and notes}
+\label{document-notes}
+
+Somtimes it is useful to flag content in a document to draw readers'
+attention to it.  It is also sometimes useful during the development of a
+document to be able to leave coments for coauthors and readers.  \sbmlpkg
+provides a few commands for these purposes.
+
+\begin{description}[font=\normalfont\ttfamily,style=nextline]
+
+\item[\cmd{notice}] Puts \notice a hand pointer in the left margin
+  (illustrated at the left).  The symbol will always be printed.
+
+\item[\cmd{warning}] Puts \warning a warning sign in the left margin
+  (illustrated at the left).  The symbol will always be printed.
+
+\item[\cmd{draftnote\{\emph{text}\}}] Writes \draftnoteForced{The note
+    text will only appear for documents in draft mode.} the \emph{text} as a
+  yellow margin note (illustrated at the left), but only if the document
+  flag \texttt{[draftspec]} is given to the \cmd{documentclass} command.
+  If the flag is not given, nothing is printed in the margin.
+
+\end{description}
+
+The commands \cmd{notice} and \cmd{warning} are intended to be used for
+things that should be left in all versions of a specification document,
+whether draft or final.  The command \cmd{draftnote}, on the other hand, is
+for content that is only meant to be included in draft versions of the
+document.
 
 
 % -----------------------------------------------------------------------------
@@ -983,6 +1017,12 @@ each one to learn more about them.  Documentation is available at CTAN
   columns of text on a page.  In \sbmlpkg, it is used to produce two-column
   table of contents when the \texttt{[twocolumntoc]} option is given as
   described in \sect{pkg-options}.
+
+\item \texttt{overpic}: The \texttt{overpic} package provides the ability
+  to write \latex content on top of a figure.  This is particularly handy
+  when including graphics in PDF format and you need to insert, for
+  example, section references or other information that is generated
+  dynamically.
 
 \item \texttt{natbib}: This reimplements the normal \latex \cmd{cite}
   command to work with author-year citations and add a number of useful
