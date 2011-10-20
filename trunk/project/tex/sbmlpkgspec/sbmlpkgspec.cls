@@ -1,10 +1,12 @@
-%% Filename    : sbmlpkgspec.cls
-%% Description : LaTeX style file for SBML Level 3 package specifications
-%% Author(s)   : Michael Hucka <mhucka@caltech.edu>
+%% ============================================================================
+%% Filename:     sbmlpkgspec.cls
+%% Description:  LaTeX style file for SBML Level 3 package specifications
+%% Author(s):    Michael Hucka <mhucka@caltech.edu>
 %% Organization: California Institute of Technology
-%% Created     : 2011-08-11
+%% Date created: 2011-08-11
+%% Home page:    http://sbml.org/Documents/Specifications/LaTeX
 %%
-%% Copyright 2007-2011 California Institute of Technology
+%% Copyright 2007-2011 California Institute of Technology, Pasadena, CA, USA.
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
@@ -27,10 +29,7 @@
 %% You should have received a copy of the GNU Lesser General Public License
 %% along with this library; if not, write to the Free Software Foundation,
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
-
-%% ----------------------------------------------------------------------------
-%% Identification.
-%% ----------------------------------------------------------------------------
+%% ============================================================================
 
 %% It would be so nice to be able to put the CVS/RCS 'Date' tag in the
 %% \filedate below.  Unfortunately, LaTeX will barf on the resulting string.
@@ -82,6 +81,7 @@
 \RequirePackage[pagewise,mathlines,edtable,right]{lineno}
 \RequirePackage{calc}
 \RequirePackage{fancyhdr}
+\RequirePackage{fancybox}
 \RequirePackage{amssymb}
 \RequirePackage{wasysym}
 \RequirePackage{enumitem}
@@ -174,6 +174,10 @@
   \RequirePackage[firstpage]{draftwatermark}
   \SetWatermarkLightness{0.92}
 \fi
+
+% \RequirePackage[textsize=scriptsize]{todonotes}
+
+\RequirePackage{overpic}
 
 
 %% ----------------------------------------------------------------------------
@@ -275,7 +279,8 @@
 \definecolor{mediumgray}{gray}{0.5}
 \definecolor{darkgray}{gray}{0.3}
 \definecolor{almostblack}{gray}{0.22}
-\definecolor{lightyellow}{rgb}{0.995,0.97,0.93}
+\definecolor{lightyellow}{rgb}{0.98,0.94,0.7}
+\definecolor{verylightyellow}{rgb}{0.97,0.95,0.85}
 \definecolor{darkblue}{rgb}{0.1,0.4,0.55}
 \definecolor{mediumgreen}{rgb}{0.1,0.6,0.3}
 
@@ -389,8 +394,7 @@
 \def\packageVersionDate#1{\gdef\@packageVersionDate{#1}}
 \def\@packageVersionDate{\@empty}
 
-\def\notice#1{\gdef\@notice{#1}}
-\def\@notice{\@empty}
+\def\frontNotice#1{\gdef\@frontNotice{#1}}
 
 \def\@puttitle{%
   \ifx\@packageGeneralURL\undefined
@@ -505,7 +509,11 @@
   \thispagestyle{empty}\@thanks
   \vfill
   \centering%
-  \begin{minipage}{5.45in}\color{DarkRed}\@notice\end{minipage}%
+  \ifx\@frontNotice\undefined
+  \relax
+  \else
+    {\cornersize{0.25}\color{DarkRed}\ovalbox{\begin{minipage}{5.45in}\@frontNotice\end{minipage}}}%
+  \fi
   \vfill
   \ifx\@packageGeneralURL\undefined
   \relax
@@ -803,12 +811,13 @@
 
 % Class and data type formatting macros.
 
-\newcommand{\class}[1]{\figureFont{#1}}     % only SBML UML classes
+\newcommand{\class}[1]{\figureFont{#1}}         % only SBML UML classes
 \newcommand{\abstractclass}[1]{\textsl{\figureFont{#1}}} % abstract classes
-\newcommand{\primtype}[1]{\literalFont{#1}} % double, SId, SBOTerm, IDREF, etc.
+\newcommand{\primtype}[1]{\literalFont{#1}}     % double, SId, SBOTerm, etc.
 \newcommand{\primtypeNC}[1]{\literalFontNC{#1}} % same, but without coloring
-\newcommand{\token}[1]{\literalFont{#1}}    % everything else
-\newcommand{\val}[1]{``\token{#1}''}        % a value in XML
+\newcommand{\token}[1]{\literalFont{#1}}        % everything else
+\newcommand{\tokenNC}[1]{\literalFontNC{#1}}    % everything else, no color
+\newcommand{\val}[1]{``\token{#1}''}            % a value in XML
 \newcommand{\uri}[1]{``\token{#1}''}
 
 % Macros used for defining validation rules.
@@ -895,16 +904,36 @@
   \end{tabular}}
 
 
-% Putting to-do's and questions into the document.
+% Margin note commands.
+% The \reversemarginpar is to put notes in the left margin.
 
-\newcommand{\todo}[2]{\mbox{}\marginpar%
-  {\hspace{0pt}\colorbox{yellow}{\footnotesize%
-      \begin{minipage}[t]{0.675in}\raggedright\fbox{#1}
-        \textit{#2}\end{minipage}}}}
+\reversemarginpar  % Want these be put on the left, not the right.
 
-\newcommand{\question}[1]{\mbox{}\marginpar%
-  {\hspace{0pt}\colorbox{GreenYellow}{\footnotesize%
-      \begin{minipage}[t]{0.675in}Q: \raggedright\textit{#1}\end{minipage}}}}
+\newcommand{\notice}{\marginpar{\hspace*{34pt}\raisebox{-0.5ex}{\Large\ding{43}}}}
+\newcommand{\warning}{\marginpar{\hspace*{34pt}{\large\danger}}}
+
+% Version using todonotes.
+% Todonotes is nice and offers things like a list of notes, but it uses
+% TikZ, and that's a heavy package to load every time.  I got annoyed by
+% how much it slowed down my latex runs that I created a simple note
+% alternative instead
+% 
+% \if@draftspec
+%   \newcommand{\sbmlshownotes}{}
+% \else
+%   \newcommand{\sbmlshownotes}{disable}
+% \fi
+%
+% \newcommand{\draftnote}[1]{\todo[backgroundcolor=lightyellow,%
+%  bordercolor=lightgray,linecolor=mediumgray,\sbmlshownotes]{\textit{#1}}}
+
+\if@draftspec
+  \newcommand{\draftnote}[1]{\mbox{}\marginpar%
+    {\hspace{0pt}\fcolorbox{Gold}{lightyellow}{\scriptsize%
+     \begin{minipage}[t]{0.675in}\raggedright\textit{#1}\end{minipage}}}}
+\else
+  \newcommand{\draftnote}[1]{}
+\fi
 
 
 % Line numbered environments.
