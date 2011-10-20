@@ -175,8 +175,6 @@
   \SetWatermarkLightness{0.92}
 \fi
 
-% \RequirePackage[textsize=scriptsize]{todonotes}
-
 \RequirePackage{overpic}
 
 
@@ -918,6 +916,8 @@
 % how much it slowed down my latex runs that I created a simple note
 % alternative instead
 % 
+% \RequirePackage[textsize=scriptsize]{todonotes}
+%
 % \if@draftspec
 %   \newcommand{\sbmlshownotes}{}
 % \else
@@ -927,10 +927,11 @@
 % \newcommand{\draftnote}[1]{\todo[backgroundcolor=lightyellow,%
 %  bordercolor=lightgray,linecolor=mediumgray,\sbmlshownotes]{\textit{#1}}}
 
+\newcommand{\draftnoteForced}[1]{\mbox{}\marginpar{\hspace{0pt}\fcolorbox{Gold}{lightyellow}
+    {\scriptsize\begin{minipage}[t]{0.65in}\raggedright\textit{#1}\end{minipage}}}}
+
 \if@draftspec
-  \newcommand{\draftnote}[1]{\mbox{}\marginpar%
-    {\hspace{0pt}\fcolorbox{Gold}{lightyellow}{\scriptsize%
-     \begin{minipage}[t]{0.675in}\raggedright\textit{#1}\end{minipage}}}}
+  \newcommand{\draftnote}[1]{\draftnoteForced{#1}}
 \else
   \newcommand{\draftnote}[1]{}
 \fi
