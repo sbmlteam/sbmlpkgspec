@@ -1,5 +1,20 @@
 \documentclass{sbmlpkgspec}
 
+%% ============================================================================
+%% Description:  Documentation for sbmlpkgspec.cls
+%% First author: Michael Hucka <mhucka@caltech.edu>
+%% Organization: California Institute of Technology
+%% Date created: September 2011
+%% Home page:    http://sbml.org/Documents/Specifications/LaTeX
+%%
+%% Copyright (C) 2011 California Institute of Technology, Pasadena, CA, USA.
+%%
+%% SBMLPkgSpec is free software; you can redistribute it and/or modify it
+%% under the terms of the GNU Lesser General Public License as published by
+%% the Free Software Foundation.  A copy of the license agreement is provided
+%% in the file named "LICENSE.txt" included with this software distribution.
+%% ============================================================================
+
 % Macros just for this document:
 
 \newcommand{\sbmlpkg}{\textsc{SBMLPkgSpec}\xspace}
@@ -11,17 +26,15 @@
 \newcommand{\webURL}{http://sbml.org/Documents/Specifications/LaTeX}
 \newcommand{\cmd}[1]{\texttt{\textbackslash #1}}
 
-\reversemarginpar  % Want "\watchout" to be put on the left, not the right.
-\newcommand{\watchout}{\marginpar{\hspace*{34pt}\raisebox{-0.5ex}{\Large\ding{43}}}}
-
-
-% Document body:
+% -----------------------------------------------------------------------------
+% Start of document
+% -----------------------------------------------------------------------------
 
 \begin{document}
 
 \packageTitle{\latex Class for SBML Package Specifications}
-\packageVersion{Version 1.0.1}
-\packageVersionDate{5 October 2011}
+\packageVersion{Version 1.1}
+\packageVersionDate{20 October 2011}
 
 \title{\sbmlpkg: A \latex Class for SBML Level~3 \mbox{Package Specification Documents}}
 
@@ -64,13 +77,13 @@ class as simply ``\sbmlpkg''.
 \subsection{Prerequisites and installation}
 
 The \sbmlpkg class itself consists of only a single file, \sbmlpkgfile.  It
-comes with some accompanying documentation (specifically, the file you are
+ comes with some accompanying documentation (specifically, the file you are
 reading, along with the source files to produce it), but the actual class
 definition is in the file \sbmlpkgfile.  Its use should require only a
 recent and relatively complete installation of \latex2e.  I developed and
 tested \sbmlpkg with the TeX Live 2009 distribution on a Mac~OS~X 10.6.x
 system.  \tab{where} lists the Internet locations from where you may obtain
-\sbmlpkg.
+\sbmlpkg. 
 
 \begin{table}[hb]
   \begin{edtable}{tabular}{ll}
@@ -115,7 +128,7 @@ ones:
 
 \subsection{Special notation in this document}
 
-Some paragraphs \watchout in this document include a hand pointer in the
+Some paragraphs \notice in this document include a hand pointer in the
 left margin (illustrated at the left).  These are meant to call attention
 to paragraphs containing significant points that may be too easily missed
 during the first reading.  Readers may wish to revisit those paragraphs
@@ -181,7 +194,7 @@ respectively.  Then comes the real body of the document, with section
 headings and so on.  Finally, the document is closed with the standard
 \latex command \cmd{end\{document\}}.
 
-If \watchout your document is a draft version, make sure to add the special
+If \notice your document is a draft version, make sure to add the special
 argument \texttt{[draftspec]} to the \cmd{documentclass} command.  This
 causes the front page of your document to have the word ``DRAFT'' printed
 on it in large gray type, and for every page footer to mention ``(DRAFT)''
@@ -193,10 +206,10 @@ in it.  Here is an example of how to use this option:
 ...
 \end{example}
 
-Not shown here, but useful to know, is that \sbmlpkg provides an additional
+Not shown here, but useful to know, is that \sbmlpkg also provides a
 command for putting a prominent notice on the front page.  Writing
-\cmd{notice\{}\emph{text}\texttt{\}} will put \emph{text} in a red box in
-the middle of the front page.
+\cmd{frontNotice\{}\emph{text}\texttt{\}} will put \emph{text} in the
+middle of the front page, in red.
 
 \sbmlpkg does not define special commands for formatting author
 information beyond the \cmd{author} command (which is actually a standard
@@ -222,7 +235,7 @@ actual SBML Level~3 package specification document:
 }
 \end{example}
 
-A \watchout final point about \sbmlpkg is worth mentioning right at the
+A \notice final point about \sbmlpkg is worth mentioning right at the
 outset.  When you run \latex (typically using the \texttt{pdflatex}
 variant) and look at the output, you will often find that section
 references, page references, and line numbers do not get refreshed
@@ -350,7 +363,7 @@ gray background color for every other row.  This is demonstrated in
 \end{example}
 %\end{table} % To avoid confusing XEmacs's paragraph filling algorithm
   
-Note \watchout that tables are \emph{not} defined by \sbmlpkg to use
+Note \notice that tables are \emph{not} defined by \sbmlpkg to use
 alternate-row background coloring by default, because in some situations
 (such as short tables, or tables containing color), it is unnecessary and
 distracting.  You must add the \cmd{rowcolors} manually, when it's
@@ -429,10 +442,10 @@ format the contents in the same style as the \texttt{example} environment.
 
 \subsection{Color}
 
-To help increase the style consistency between SBML specification
-documents, \sbmlpkg defines a number of custom color names that authors may
-use with commands such as \texttt{color}, \texttt{colorbox}, etc.
-\tab{colors} provides a list of these color names. 
+To help increase consistency between SBML specification documents, \sbmlpkg
+defines various custom color names that may be used with commands such as
+\texttt{color}, \texttt{colorbox}, etc.  \tab{colors} lists these color
+names.
 
 \newcommand{\drawcol}[1]{\colorbox{#1}{\color{#1}\rule{10ex}{1ex}}}
 
@@ -452,7 +465,8 @@ use with commands such as \texttt{color}, \texttt{colorbox}, etc.
     \texttt{darkgray}		& \drawcol{darkgray}		& red = 0.3	& blue = 0.3	& green = 0.3 \\
     \texttt{almostblack}	& \drawcol{almostblack}		& red = 0.22	& blue = 0.22	& green = 0.22 \\
     \texttt{darkblue}		& \drawcol{darkblue}		& red = 0.1	& blue = 0.4	& green = 0.55 \\
-    \texttt{lightyellow}	& \drawcol{lightyellow}		& red = 0.995	& blue = 0.97	& green = 0.93 \\
+    \texttt{lightyellow}	& \drawcol{lightyellow}		& red = 0.98	& blue = 0.94	& green = 0.7 \\
+    \texttt{verylightyellow}	& \drawcol{verylightyellow}	& red = 0.97	& blue = 0.95	& green = 0.85 \\
     \texttt{mediumgreen}	& \drawcol{mediumgreen}		& red = 0.1	& blue = 0.6	& green = 0.3 \\
     \bottomrule
   \end{edtable}
@@ -755,7 +769,7 @@ more easily.  Crucially, lists of errata and other issues recognized
 locations in the specification document, and line numbers are invaluable
 for that purpose.
 
-For \watchout the most part, you needn't do anything to get line numbers to
+For \notice the most part, you needn't do anything to get line numbers to
 be added to your document.  There are exceptions: certain content such as
 tabular material and floats are not handled by \texttt{lineno} very well,
 and require manual intervention.  Some cases cannot be fixed at all,
@@ -1033,5 +1047,9 @@ support of SBML and related software infrastructure.
 \bibliography{sbmlpkgspec}
 
 
+
+% -----------------------------------------------------------------------------
+% End of document
+% -----------------------------------------------------------------------------
 
 \end{document}
