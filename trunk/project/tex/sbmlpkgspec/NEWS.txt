@@ -1,10 +1,19 @@
 =============================================================================
-News for version X
+News for version 1.1
 =============================================================================
 
 2011-10-12 <mhucka@caltech.edu>
-* Added command \uri.
+* Renamed \notice to \frontNotice.
+* Added a box around the text put by \frontNotice on the front page.
+* Added new command \notice for placing a pointing hand in the margin.
+* Added new command \warning for placing a warning sign in the margin.
+* Added new command \draftnote for placing a text note in the margin.
+* Added new command \uri.
+* Added new command \tokenNC, a version of \token that doesn't set the color.
+* Added new color name "verylightyellow"
+* Tweaked color of "lightyellow".
 * Tweaked color of \normaltext.
+
 
 =============================================================================
 News for version 1.0.1
