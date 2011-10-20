@@ -1,8 +1,7 @@
 =============================================================================
-News for version 1.1
+News for version 1.1 (2011-10-20 <mhucka@caltech.edu>)
 =============================================================================
 
-2011-10-12 <mhucka@caltech.edu>
 * Renamed \notice to \frontNotice.
 * Added a box around the text put by \frontNotice on the front page.
 * Added new command \notice for placing a pointing hand in the margin.
