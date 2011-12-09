@@ -821,33 +821,30 @@
 % Macros used for defining validation rules.
 % First, preliminary internal macros.
 
-\newcommand{\vSymbol}{\textcolor{red}{$\Box\mkern-12mu\checkmark$}}
+\newcommand{\vSymbol}{\textcolor{red}{$\Box\mkern-14mu\checkmark$}}
 \newcommand{\vSymbolName}{checked box\xspace}
 \newcommand{\cSymbol}{\textcolor{Goldenrod}{\scalefont{0.9}\ding{115}}}
 \newcommand{\cSymbolName}{triangle\xspace}
 \newcommand{\mSymbol}{\textcolor{Green}{$\bigstar$}}
 \newcommand{\mSymbolName}{star\xspace}
 
+% Spacing adjustments when using the symbols inside regular 'description' env.
+% Note: *not* used in \sbmlrule below.
+
 \newcommand{\vsp}{\hspace*{4pt}}
 \newcommand{\csp}{\hspace*{6.25pt}}
 \newcommand{\msp}{\hspace*{4.9pt}}
 
-% A list with wider left margins.  Don't ask me to explain the
-% combination of arguments because this isn't what I get by reading
-% p. 145 of the laTeX Companion 2nd ed.  I found this by trial and
-% error.
-
-\newenvironment{sbmlenum}
- {\begin{list}{}
-   {\addtolength{\leftmargin}{5.25em}
-    \addtolength{\itemindent}{-5.25em}}}
- {\end{list}}
-
 % Now the actual user commands for validation rules.
 
-\newcommand{\validRule}          [2]{\item[\textbf{\textsf{#1}}. \vSymbol\vsp] #2}
-\newcommand{\consistencyRule}    [2]{\item[\textbf{\textsf{#1}}. \cSymbol\csp] #2}
-\newcommand{\modelingRule}       [2]{\item[\textbf{\textsf{#1}}. \mSymbol\msp] #2}
+\newcommand{\sbmlrule}[3]{\begin{enumerate}[labelwidth=8em,leftmargin=10em,align=left]
+    \item[\textbf{\textsf{#1}}~~#2] #3
+  \end{enumerate}}
+
+\newcommand{\validRule}[2]      {\sbmlrule{#1}{\vSymbol}{#2}}
+\newcommand{\consistencyRule}[2]{\sbmlrule{#1}{\cSymbol}{#2}}
+\newcommand{\modelingRule}[2]   {\sbmlrule{#1}{\mSymbol}{#2}}
+
 
 % Code examples.
 % First set the properties we use for all calls to the listing environment.
