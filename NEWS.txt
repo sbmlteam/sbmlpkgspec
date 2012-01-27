@@ -4,6 +4,7 @@ News for version 1.2.0 (2012-01-27 <mhucka@caltech.edu>)
 
 * Added amsmath as a package loaded by default.
 * Fixed vertical heights of \big delimiters in math mode.
+* Rewrote \validRule and friends to not require an \sbmlenum environment.
 
 
 =============================================================================
