@@ -33,8 +33,8 @@
 \begin{document}
 
 \packageTitle{\latex Class for SBML Package Specifications}
-\packageVersion{Version 1.1.0}
-\packageVersionDate{20 October 2011}
+\packageVersion{Version 1.2.0}
+\packageVersionDate{27 January 2012}
 
 \title{\sbmlpkg: A \latex Class for SBML Level~3\\[3pt]\mbox{Package Specification Documents}}
 
@@ -980,6 +980,12 @@ each one to learn more about them.  Documentation is available at CTAN
   characters.  In \sbmlpkg, it is used to get the symbols defined by the
   validation rule commands \cmd{validRule}, \cmd{consistencyRule} and
   \cmd{modelingRule} described in \sect{validation-rules}.
+
+\item \texttt{amsmath}: This package defines many additional symbols and
+  macros for mathematics.  It is not actually used in \sbmlpkg, but it is
+  popular, and to make it work properly in combination with \sbmlpkg, some
+  corrections to delimiter sizes need to be introduced.  Therefore,
+  \texttt{amsmath} is included too.
 
 \item \texttt{array}: This provides a new and extended implementation of
   the \latex \texttt{array} environment and \texttt{tabular}
