@@ -82,6 +82,7 @@
 \RequirePackage{calc}
 \RequirePackage{fancyhdr}
 \RequirePackage{fancybox}
+\RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{wasysym}
 \RequirePackage{enumitem}
@@ -258,6 +259,13 @@
 \DeclareFontShape{T1}{txtt}{bx}{ui}{	%bold extended unslanted italic
      <-> ssub * txtt/b/sl%
 }{}
+
+
+% Adjustments due to quirks of the combination of fourier and amsmath:
+
+% Make the \big( braces regular height (default is too short):
+\delimiterfactor=1000
+\delimitershortfall=1pt
 
 
 %% ----------------------------------------------------------------------------
