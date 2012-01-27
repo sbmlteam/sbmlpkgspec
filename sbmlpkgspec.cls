@@ -6,7 +6,7 @@
 %% Date created: 2011-08-11
 %% Home page:    http://sbml.org/Documents/Specifications/LaTeX
 %%
-%% Copyright 2007-2011 California Institute of Technology, Pasadena, CA, USA.
+%% Copyright 2007-2012 California Institute of Technology, Pasadena, CA, USA.
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
@@ -34,7 +34,7 @@
 %% It would be so nice to be able to put the CVS/RCS 'Date' tag in the
 %% \filedate below.  Unfortunately, LaTeX will barf on the resulting string.
 
-\def\filedate{2011/10/20}
+\def\filedate{2012/01/27}
 
 \NeedsTeXFormat{LaTeX2e}
 
