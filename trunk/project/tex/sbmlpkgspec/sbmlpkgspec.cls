@@ -525,11 +525,12 @@
   \relax
   \else
     The latest release, past releases, and other materials related to this specification are available at\\
-    {\small\url{\@packageGeneralURL}}\\[2em]
+    {\small\url{\@packageGeneralURL}}\\[1em]
     \emph{This} release of the specification is available at\\
     {\small\url{\@packageThisVersionURL}}\\
-    \vfill
+    \\[2em]
   \fi
+  \vfill
   \centerline{\includegraphics[width=1in]{\SBMLbadge}}
   \clearpage
   \endgroup
@@ -554,11 +555,11 @@
   \begin{center}%
     \let \footnote \thanks
     \@puttitle
-    \vskip 3em%
+    \vskip 2.5em%
     {\lineskip .5em%
       \@putauthorinfo
       }%
-    \vskip 3em%
+    \vskip 2em%
     {\large\@packageVersionDate}%
     \vskip 2em%
     {\large\fbox{\@packageVersion}}%
