@@ -528,7 +528,7 @@
     {\small\url{\@packageGeneralURL}}\\[1em]
     \emph{This} release of the specification is available at\\
     {\small\url{\@packageThisVersionURL}}\\
-    \\[2em]
+    \vspace*{2em}
   \fi
   \vfill
   \centerline{\includegraphics[width=1in]{\SBMLbadge}}
