@@ -930,11 +930,12 @@
 \newcommand{\notice}{\marginpar{\hspace*{34pt}\raisebox{-0.5ex}{\color{black}\Large\ding{43}}}}
 \newcommand{\warning}{\marginpar{\hspace*{34pt}{\color{red}\large\danger}}}
 
-% Version using todonotes.
-% Todonotes is nice and offers things like a list of notes, but it uses
-% TikZ, and that's a heavy package to load every time.  I got annoyed by
-% how much it slowed down my latex runs that I created a simple note
-% alternative instead
+% Margin notes.
+%
+% Todonotes is nice and offers things like a list of notes, but it uses TikZ,
+% and that's a heavy package to load every time.  I got annoyed by how much
+% it slowed down my latex runs that I created a simple note alternative
+% instead. Here's the original todonotes version, for posterity:
 % 
 % \RequirePackage[textsize=scriptsize]{todonotes}
 %
@@ -947,11 +948,11 @@
 % \newcommand{\draftnote}[1]{\todo[backgroundcolor=lightyellow,%
 %  bordercolor=lightgray,linecolor=mediumgray,\sbmlshownotes]{\textit{#1}}}
 
-\newcommand{\draftnoteForced}[1]{\mbox{}\marginpar{\hspace{0pt}\fcolorbox{Gold}{lightyellow}
+\newcommand{\draftnoteInternal}[1]{\mbox{}\marginpar{\hspace{0pt}\fcolorbox{Gold}{lightyellow}
     {\scriptsize\begin{minipage}[t]{0.65in}\raggedright\textit{#1}\end{minipage}}}}
 
 \if@draftspec
-  \newcommand{\draftnote}[1]{\draftnoteForced{#1}}
+  \newcommand{\draftnote}[1]{\draftnoteInternal{#1}}
 \else
   \newcommand{\draftnote}[1]{}
 \fi
