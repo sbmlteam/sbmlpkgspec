@@ -1,4 +1,59 @@
 =============================================================================
+News for version 1.3.0 (2012-07-24 <mhucka@caltech.edu>)
+=============================================================================
+
+Many changes.  WARNING: this set of changes necessitated adjusting the page
+margins and text height, which means that previous users of this LaTeX
+package will probably experience shifts in page breaks when using the new
+version.  (Apologies for that, but I think the new page layout is an
+improvement going forward.)
+
+* Changed the page header and footer.  The page footer now only have 2 items,
+  to make room for long section titles, and the header now includes the
+  subsection title.
+
+* Tweaked the spacing around section titles and floats, to allow for somewhat
+  more space.  The previous settings sometimes left too little white space in
+  front or after these elements.
+
+* Tweaked the values of several colors, including the blue used in links.
+
+* Redefined \texttt and the example environments to set the font color to
+  pure black, which they were (incorrectly) not doing before.
+ 
+* Added new definitions of section, figure and table reference macros
+  \sec{...}, \fig{...} and \tab{...}.  These are defined such that it is
+  unnecessary to write the object reference ahead of them.  The result is
+  that instead of writing "see Figure~\vref{...}", you can write "see
+  \fig{...}" and it will be changed to "see Figure~X on page Y".  Similarly
+  for section references: instead of "in Section~\vref{...}", you can now
+  write "in \sec{...}".
+
+* Tweaked the appearance and shape of list bullets.
+
+* Changed the \warning macro to put the symbol in red.
+
+* Removed the macros \classbox and \emptyClassBox, which really weren't ever
+  used or even documented.
+
+* Redefined the 'example' environment to take an optional argument, which can
+  consist of the arguments that the "listings" package macros accept.  (See
+  the documentation for "listings" for information.)
+
+* Redefined interal macros to use names with '@' in them, to make it less
+  likely that the macro names will collide with something that a user might
+  have defined in their document.
+
+* Added new LaTeX package dependencies: bbding, suffix.
+
+* No longer loading package nameref, because I found a better way to do the
+  relevant macros.
+
+* Updated the user manual to reflect the changes in this release and feedback
+  from the previous release.
+
+
+=============================================================================
 News for version 1.2.0 (2012-01-27 <mhucka@caltech.edu>)
 =============================================================================
 
