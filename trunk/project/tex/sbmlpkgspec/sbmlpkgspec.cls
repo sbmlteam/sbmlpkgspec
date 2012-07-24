@@ -280,6 +280,7 @@
 \definecolor{mediumgray}{gray}{0.5}
 \definecolor{darkgray}{gray}{0.3}
 \definecolor{almostblack}{gray}{0.23}
+\definecolor{normaltextcolor}{gray}{0.23} % Synonym for 'almostblack'
 \definecolor{lightyellow}{rgb}{0.98,0.94,0.7}
 \definecolor{verylightyellow}{rgb}{0.97,0.95,0.85}
 \definecolor{darkblue}{rgb}{0.1,0.4,0.55}
@@ -288,18 +289,16 @@
 % Color for marking changed text, conditional on whether gray scale mode is on.
 
 \ifgrayscalespec
-  \newcommand{\@sbmlchangedcolor}{\normaltextcolor}
+  \newcommand{\@sbmlchangedcolor}{normaltextcolor}
 \else
-  \definecolor{@sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
-  \newcommand{\@sbmlchangedcolor}{Maroon}
+  \definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
+  \newcommand{\@sbmlchangedcolor}{sbmlchangedcolor}
 \fi
 
 % Macros for making consistent font, color, and other selections:
 
-\newcommand{\@normaltextcolor}{almostblack}
-
 \newcommand{\changed}[1]{\textcolor{\@sbmlchangedcolor}{#1}}
-\newenvironment{blockChanged}{\color{\@sbmlchangedcolor}}{\color{\@normaltextcolor}}
+\newenvironment{blockChanged}{\color{\@sbmlchangedcolor}}{\color{normaltextcolor}}
 
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
@@ -662,8 +661,8 @@
 
 \renewcommand{\section}{\@startsection%
   {section}{1}{0pt \@plus 1ex}{-3.5ex \@plus -2ex \@minus -.2ex}%
-  {1.2ex}{\clearpage\thispagestyle{footeronly}\hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{\@normaltextcolor}%
-    \hspace*{-6.84in}\color{sbmlgray}{\rule[-0.8em]{6.84in}{0.1em}}\color{\@normaltextcolor}%
+  {1.2ex}{\clearpage\thispagestyle{footeronly}\hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{normaltextcolor}%
+    \hspace*{-6.84in}\color{sbmlgray}{\rule[-0.8em]{6.84in}{0.1em}}\color{normaltextcolor}%
     \noindent\normalfont\LARGE\bfseries\sffamily\hspace*{-6.84in}}}
 
 \renewcommand{\subsection}{\@startsection%
@@ -948,11 +947,11 @@
 % \newcommand{\draftnote}[1]{\todo[backgroundcolor=lightyellow,%
 %  bordercolor=lightgray,linecolor=mediumgray,\sbmlshownotes]{\textit{#1}}}
 
-\newcommand{\@draftnoteForced}[1]{\mbox{}\marginpar{\hspace{0pt}\fcolorbox{Gold}{lightyellow}
+\newcommand{\draftnoteForced}[1]{\mbox{}\marginpar{\hspace{0pt}\fcolorbox{Gold}{lightyellow}
     {\scriptsize\begin{minipage}[t]{0.65in}\raggedright\textit{#1}\end{minipage}}}}
 
 \if@draftspec
-  \newcommand{\draftnote}[1]{\@draftnoteForced{#1}}
+  \newcommand{\draftnote}[1]{\draftnoteForced{#1}}
 \else
   \newcommand{\draftnote}[1]{}
 \fi
@@ -1110,7 +1109,7 @@
 % Final settings before the body begins.
 %
 
-\color{\@normaltextcolor}                % Default body font color.
+\color{normaltextcolor}                % Default body font color.
 
 %% -----------------------------------------------------------------------------
 %% End of file `cekarticle.cls'.
