@@ -1,13 +1,14 @@
 \documentclass{sbmlpkgspec}
+\usepackage{microtype}
 
 %% ============================================================================
 %% Description:  Documentation for sbmlpkgspec.cls
 %% First author: Michael Hucka <mhucka@caltech.edu>
 %% Organization: California Institute of Technology
 %% Date created: September 2011
-%% Home page:    http://sbml.org/Documents/Specifications/LaTeX
+%% https://sbml.svn.sourceforge.net/svnroot/sbml/trunk/project/tex/sbmlpkgspec
 %%
-%% Copyright (C) 2011 California Institute of Technology, Pasadena, CA, USA.
+%% Copyright (C) 2011-2012 California Institute of Technology, Pasadena, CA.
 %%
 %% SBMLPkgSpec is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by
@@ -17,14 +18,32 @@
 
 % Macros just for this document:
 
-\newcommand{\sbmlpkg}{\textsc{SBMLPkgSpec}\xspace}
-\newcommand{\sbmlpkgfile}{\texttt{sbmlpkgspec.cls}\xspace}
+\newcommand{\sbmlpkg}{\texorpdfstring{%
+    \textls[-25]{\textsc{SBMLPkgSpec}}}{%
+    \textsc{SBMLPkgSpec}}\xspace}
+\newcommand{\sbmlpkghead}{\texorpdfstring{%
+    \textls[-50]{\textsc{SBMLPkgSpec}}}{%
+    \textsc{SBMLPkgSpec}}\xspace}
+\newcommand{\sbmlpkgfile}{\literalFont{sbmlpkgspec.cls}\xspace}
 \newcommand{\latex}{\LaTeX{}\xspace}
 \newcommand{\tex}{\TeX{}\xspace}
 \newcommand{\distURL}{http://sourceforge.net/projects/sbml/files/specifications/tex}
-\newcommand{\srcURL}{https://sbml.svn.sourceforge.net/svnroot/sbml/trunk/project/tex}
-\newcommand{\webURL}{http://sbml.org/Documents/Specifications/LaTeX}
-\newcommand{\cmd}[1]{\texttt{\textbackslash #1}}
+\newcommand{\srcURL}{https://sbml.svn.sourceforge.net/svnroot/sbml/trunk/project/tex/sbmlpkgspec}
+\newcommand{\webURL}{http://sbml.org/Documents/Specifications/The_SBMLPkgSpec_LaTeX_class}
+\newcommand{\cmd}[1]{\literalFont{\textbackslash #1}}
+
+% Custom latex listing style, for use with the listings package.  The default
+% highlights far too many things, IMHO.  This keeps it simple and only adjusts
+% the appearance of comments within listings.
+
+\lstdefinelanguage{mylatex}{%
+  morekeywords={},%
+  sensitive,%
+  alsoother={0123456789$_},%$
+  morecomment=[l]\%%
+}[keywords,tex,comments]
+
+\lstdefinestyle{latex}{language=mylatex}
 
 % -----------------------------------------------------------------------------
 % Start of document
@@ -33,10 +52,11 @@
 \begin{document}
 
 \packageTitle{\latex Class for SBML Package Specifications}
-\packageVersion{Version 1.2.0}
-\packageVersionDate{27 January 2012}
+\packageVersion{Version 1.3.0}
+\packageVersionDate{24 July 2012}
 
-\title{\sbmlpkg: A \latex Class for SBML Level~3\\[3pt]\mbox{Package Specification Documents}}
+\title{\sbmlpkghead: A \latex Class for SBML Level~3
+  \texorpdfstring{\\[3pt]}{}\mbox{Package Specification Documents}}
 
 \author{Michael Hucka\\[0.25em]
   \mailto{mhucka@caltech.edu}\\[0.25em]
@@ -54,36 +74,27 @@
 % -----------------------------------------------------------------------------
 
 The \sbmlpkg document class for \latex provides a standard format for SBML
-Level~3 \emph{package specification} documents.  In the paragraphs below, I
-explain how to use this document class.  I assume readers are already
-familiar with \latex.  (There are many tutorials available on \latex today,
-and readers should have not trouble finding them on the Internet if they
-need more information than what is provided here.)
+Level~3 \emph{package specification} documents.  In this document, I explain
+how to use \sbmlpkg.  I assume readers are familiar with \latex.  (There are
+many tutorials and books available on \latex, and readers should have no
+trouble finding resources if needed.)
 
-The document before you is itself formatted using the \sbmlpkg class, with
-a minor change to omit some SBML package-specific text normally placed on
-the front page.  (For example, the front page of this document does not
-announce it is an ``SBML Level 3 Package Specification'', nor does it
-provide a package URL and other similar information.)  In all other
+The document before you is itself formatted using the \sbmlpkg class, with a
+minor change to omit some SBML Level~3 package-specific text normally placed
+on the front page.  (For example, the front page of this document does not
+announce it is an ``SBML Level 3 Package Specification''.)  In other
 respects, ``what you see is what you get''---this is the appearance of an
 SBML Level~3 package specification document when it is formatted with
 \sbmlpkg.
 
-Incidentally, in the rest of this document, I usually refer to the \sbmlpkg
-class as simply ``\sbmlpkg''.
-
-
 
 \subsection{Prerequisites and installation}
 
-The \sbmlpkg class itself consists of only a single file, \sbmlpkgfile.  It
- comes with some accompanying documentation (specifically, the file you are
-reading, along with the source files to produce it), but the actual class
-definition is in the file \sbmlpkgfile.  Its use should require only a
-recent and relatively complete installation of \latex2e.  I developed and
-tested \sbmlpkg with the TeX Live 2009 distribution on a Mac~OS~X 10.6.x
-system.  \tab{where} lists the Internet locations from where you may obtain
-\sbmlpkg. 
+\tab{where} lists the Internet locations from where you may obtain
+\sbmlpkg. The class itself consists of one file, \sbmlpkgfile, and a
+subdirectory named ``\texttt{logos}''.  It also comes with some accompanying
+documentation (specifically, the file you are reading, along with the source
+files used to produce it).
 
 \begin{table}[hb]
   \begin{edtable}{tabular}{ll}
@@ -99,10 +110,16 @@ system.  \tab{where} lists the Internet locations from where you may obtain
   \label{where}
 \end{table}
 
-
-To use \sbmlpkg, you will need to inform your copy of \LaTeXe where to find
-\sbmlpkgfile.  This can be done in a variety of ways.  Here are two common
-ones:
+The use of \sbmlpkg should require only a recent and relatively complete
+installation of \LaTeXe.  I developed and tested this document
+class with the TeX Live 2011 distribution on a Mac~OS~X 10.6.x system, and it
+is has been reported to work with TeX Live on Windows and Ubuntu Linux.  (For
+Ubuntu, make sure to install the following packages: ``\texttt{texlive}'',
+``\texttt{texlive-latex-extra}'', ``\texttt{texlive-humantities}'', and
+``\texttt{texlive-fonts-extra}''.)  To use \sbmlpkg, you will need to inform
+your copy of \latex where to find the file \sbmlpkgfile and its accompanying
+subdirectory ``\texttt{logos''}.  This can be done in a variety of ways.
+Here are two common ones:
 
 \begin{itemize}
 
@@ -112,7 +129,7 @@ ones:
   ``\texttt{logos}'') to the folder where you keep the other files for the
   SBML Level~3 package specification you are authoring, and you are done.
   The next time you run \latex in that folder (assuming you declare the
-  document class as explained in \sect{usage}), it will find the
+  document class as explained in \sec{usage}), it will find the
   \texttt{.cls} file in the current directory and be on its merry way.
 
 \item \emph{``Central'' installation}.  In this approach, you install
@@ -135,7 +152,7 @@ during the first reading.  Readers may wish to revisit those paragraphs
 once they are actually using \sbmlpkg in practice.
 
 
-\subsection{Where to send bug reports and Feedback}
+\subsection{Where to send bug reports and feedback}
 
 Please report problems you encounter with \sbmlpkg.  You can contact the
 author directly, at the email address given on the cover page, or you can
@@ -143,7 +160,7 @@ file a bug report using the tracker at \url{http://sbml.org/issue-tracker}.
 
 
 % -----------------------------------------------------------------------------
-\section{Creating documents with \sbmlpkg}
+\section{Creating documents with \sbmlpkghead}
 \label{usage}
 % -----------------------------------------------------------------------------
 
@@ -157,7 +174,7 @@ This section provides a summary of the main features and capabilities of
 The following fragment illustrates the basic structure of a simple input
 file.
 
-\begin{example}
+\begin{example}[style=latex]
 \documentclass{sbmlpkgspec}
 \begin{document}
 
@@ -200,16 +217,15 @@ causes the front page of your document to have the word ``DRAFT'' printed
 on it in large gray type, and for every page footer to mention ``(DRAFT)''
 in it.  Here is an example of how to use this option:
 
-\begin{example}
+\begin{example}[style=latex]
 \documentclass[draftspec]{sbmlpkgspec}
-\begin{document}
-...
 \end{example}
 
-Not shown here, but useful to know, is that \sbmlpkg also provides a
-command for putting a prominent notice on the front page.  Writing
-\cmd{frontNotice\{}\emph{text}\texttt{\}} will put \emph{text} in the
-middle of the front page, in red.
+Not shown here, but useful to know, is that \sbmlpkg also provides a command
+for putting a prominent notice on the front page.  Writing
+\cmd{frontNotice\{}\emph{text}\texttt{\}} will put \emph{text} in the middle
+of the front page, in red.  It is useful for warning readers of your document
+about known issues, for example if the document is a work in progress.
 
 \sbmlpkg does not define special commands for formatting author
 information beyond the \cmd{author} command (which is actually a standard
@@ -223,7 +239,7 @@ An easy approach is to embed a \texttt{tabular} environment inside the
 \cmd{author} command.  The following is an example taken directly from an
 actual SBML Level~3 package specification document:
 
-\begin{example}
+\begin{example}[style=latex]
 \author{%
   \begin{tabular}{c>{\hspace{20pt}}c}
     Lucian P. Smith                     & Michael Hucka\\[0.25em]
@@ -231,16 +247,15 @@ actual SBML Level~3 package specification document:
     Department of Bioengineering        & Computing and Mathematical Sciences\\
     University of Washington            & California Institute of Technology\\
     Seattle, WA, US                     & Pasadena, CA, US\\
-  \end{tabular}
-}
+  \end{tabular}}
 \end{example}
 
-A \notice final point about \sbmlpkg is worth mentioning right at the
+A final point about \sbmlpkg is worth mentioning right at the
 outset.  When you run \latex (typically using the \texttt{pdflatex}
 variant) and look at the output, you will often find that section
 references, page references, and line numbers do not get refreshed
 correctly after one invocation of the command.  With \sbmlpkg, you will
-typically have to run the command not twice, but \emph{three} times, to get
+typically have to run the command not twice, but \notice \emph{three} times, to get
 the correct, final numbers, because it uses the \texttt{varioref} package.
 This is typically not a problem during actual writing; the edit-run-preview
 cycle is such that you usually only care to see the results of content
@@ -261,7 +276,7 @@ extensions without having to include them manually.  For example, if you
 had an illustration in a file named ``\texttt{example.pdf}'', the following
 fragment would generate a simple figure containing it:
 
-\begin{example}
+\begin{example}[style=latex]
 \begin{figure}
   \includegraphics{example}
   \caption{The figure caption.}
@@ -274,24 +289,26 @@ options for controlling the size/scale and other characteristics of
 graphics files.  Please refer to its documentation for help on how to use
 it fully.
 
-To produce the most pleasing-looking documents, create your figures using
-8~point Helvetica for the text font.  \sbmlpkg redefines figures and tables
-to use Helvetica as the font family and an 8~point size by default, so
-creating included figures with match characteristics will lead to more
+To produce pleasing-looking documents, I suggest you create your figures
+using 8~point Helvetica for the text font.  \sbmlpkg redefines figures and
+tables to use Helvetica as the font family and an 8~point size by default, so
+creating figures with matching characteristics will lead to more
 consistent-looking documents.  The stylistic choices here were made not
-only for aesthetic reasons; the tighter letter spacing of the sans serif
-font, and the smaller font size, makes it easier for authors to fit
-material into tables and figures.  The specific choice of Helvetica is also
-driven in part by consideration of the tools available to authors.  In
-particular, it is today common to find online drawing tools that offer
-Helvetica as a font choice.
+solely for aesthetic reasons; the tighter letter spacing of the sans serif
+font, and the smaller font size, makes it easier for authors to fit material
+into tables and figures.  The specific choice of Helvetica is also driven in
+part by consideration of the tools available to authors.  In particular, it
+is today common to find online drawing tools that offer Helvetica as a font
+choice.  (In fact, the online drawing system in Google Docs \emph{only}
+offers Helvetica.)
 
 \sbmlpkg also preloads the \texttt{booktabs} package.  This provides
 \cmd{toprule}, \cmd{midrule} and \cmd{bottomrule} (among others), which can
 be used to produce attractive tables.  The following text is what produced
 \fig{where}:
 
-\begin{example}
+\vspace*{-0.25ex}
+\begin{example}[style=latex]
 \begin{table}[hb]
   \begin{edtable}{tabular}{ll}                 % From the lineno package; see text, Section 2.2
     \toprule                                   % From booktabs -- generates line at top
@@ -307,36 +324,10 @@ be used to produce attractive tables.  The following text is what produced
 \end{table}
 \end{example}
 
-The table and figure environments in \sbmlpkg have been redefined to place
-their content inside a \latex \texttt{centering} environment.  This causes
-the content to be centered on the page, and consequently, you do not need
-to add centering commands to your floats.
-
-To refer to figures, tables and other elements in the document, please use
-the special commands listed in \tab{ref-commands} instead of writing the
-usual idioms ``Figure\textasciitilde\textbackslash ref\{...\}''.  The
-commands in \tab{ref-commands} will not only produce content and page
-references that are automatically hyperlinked to the appropriate locations
-in the finished document; they will also take care of adding the tie for
-you, and they use the package \texttt{varioref} instead of the regular
-\latex \texttt{ref} command to produce more informative references to
-figures and tables.
-
-\begin{table}[h]
-  \begin{edtable}{tabular}{lll}
-    \toprule
-    \textbf{Command}				 & \textbf{Purpose} & \textbf{Output}\\
-    \midrule
-    \texttt{\textbackslash fig\{}\emph{label\,}\texttt{\}}  & Figure reference	& Figure X\\
-    \texttt{\textbackslash tab\{}\emph{label\,}\texttt{\}}  & Table reference	& Table X\\
-    \texttt{\textbackslash sect\{}\emph{label\,}\texttt{\}} & Section reference	& Section X\\
-    \bottomrule
-  \end{edtable}
-  \caption{Commands for referring to figures and other entities in an
-    \sbmlpkg document.  Use the commands with an argument consisting of the
-    label being referenced.  For example: \cmd{fig\{myfig\}}.}
-  \label{ref-commands}
-\end{table}
+\sbmlpkg also redefines the table and figure environments to place their
+content inside a \latex \texttt{centering} environment.  This causes the
+content to be centered on the page, and consequently, you do not need to add
+centering commands to your floats.
 
 In the case of long tables, readability is often enhanced by adding a
 background color to every other row.  Once again, \sbmlpkg preloads a
@@ -346,35 +337,99 @@ alternate rows in a table.  Although many variations are possible, for
 consistency between SBML package specification documents, I recommend using
 one in particular:
 
-\begin{example}
+\begin{example}[style=latex]
 \rowcolors{2}{sbmlrowgray}{}
 \end{example}
 
-Simply insert the literal line above after the opening \cmd{begin\{table\}}
-of your table, and proceed as usual.  The resulting table will have a light
-gray background color for every other row.  This is demonstrated in
-\fig{sbmlcore}, which was produced using the following opening sequence:
+Simply insert the text above after the opening \cmd{begin\{table\}} of your
+table, and proceed as usual.  The result is demonstrated in \fig{sbmlcore},
+which was produced using the following sequence:
 
-\begin{example}
+\begin{example}[style=latex]
 \begin{table}[hbt]
   \rowcolors{2}{sbmlrowgray}{}
   \begin{edtable}{tabular}{ll}
   ...
+  \end{edtable}
+\end{table}
 \end{example}
-%\end{table} % To avoid confusing XEmacs's paragraph filling algorithm
   
 Note \notice that tables are \emph{not} defined by \sbmlpkg to use
 alternate-row background coloring by default, because in some situations
-(such as short tables, or tables containing color), it is unnecessary and
-distracting.  You must add the \cmd{rowcolors} manually, when it's
-appropriate.
+(such as short tables, or tables containing color), alternate row coloring is
+unnecessary and distracting.  You must add the \cmd{rowcolors} manually, when
+it's appropriate.
+
+
+\subsection{Cross-references to tables, figures and sections}
+\label{references}
+
+To refer to figures, tables, sections and other elements in your document,
+please use the special commands listed in \tab{ref-commands} instead of
+writing the usual idioms ``Figure\textasciitilde\textbackslash
+\texttt{ref\{...\}}''.  The commands in \tab{ref-commands} will produce
+\emph{both} item number and page references that are automatically
+hyperlinked to the appropriate locations in the finished document; they will
+also take care of adding ties in the appropriate places for you, and they use
+the \texttt{vref} command from the package \texttt{varioref} (instead of the
+regular \latex \texttt{ref}) to vary the text description used in page
+references. 
+
+\begin{table}[h]
+  \vspace*{-1ex}
+  \begin{edtable}{tabular}{lll}
+    \toprule
+    \textbf{Command} & \textbf{Purpose} & \textbf{Example output}\\
+    \midrule
+    \texttt{\textbackslash fig\{}\emph{label\,}\texttt{\}}
+    & Figure reference
+    & Figure X on page Y\\
+    \texttt{\textbackslash tab\{}\emph{label\,}\texttt{\}}
+    & Table reference
+    & Table X on page Y\\
+    \texttt{\textbackslash sec\{}\emph{label\,}\texttt{\}}
+    & Section reference
+    & Section X on page Y\\[0.25em]
+    \texttt{\textbackslash fig*\{}\emph{label\,}\texttt{\}}
+    & Figure reference
+    & Figure X\\
+    \texttt{\textbackslash tab*\{}\emph{label\,}\texttt{\}}
+    & Table reference
+    & Table X\\
+    \texttt{\textbackslash sec*\{}\emph{label\,}\texttt{\}}
+    & Section reference
+    & Section X\\
+    \bottomrule
+  \end{edtable}
+  \caption{Commands for referring to figures and other entities in an
+    \sbmlpkg document.  Use the commands with an argument consisting of the
+    label being referenced.  For example: \cmd{fig\{myfig\}}.}
+  \label{ref-commands}
+\end{table}
+
+As shown in \tab{ref-commands}, the \sbmlpkg class also defines starred
+versions of the commands.  These are useful when the item being referenced
+is located on another page, and you want to refer to it more than once from
+the text of a given paragraph.  \notice  The regular version of the commands 
+such as ``\texttt{\textbackslash fig\{}\emph{label\,}\texttt{\}}'' will always
+produce a page reference (e.g., ``see Figure~2.5 on the following page''),
+which becomes rather tedious to read if there is more than one occurrence of
+it in the same paragraph.  To avoid that, use the normal version of the
+command the first time you need it in a paragraph, and then use the starred
+version on all subsequent occasions within the same paragraph.
+
+It may be worth mentioning that the page reference commands are clever enough
+to avoid writing ``... on page Y'' when the object in question is on the same
+page as the reference.  Instead, the commands will only write ``Figure~X'' in
+automatically that situation.  (The \latex \texttt{varioref} package is
+marvelous in that regard.)
 
 
 \subsection{Hyperlinks}
 \label{hyperlinks}
 
-In the last example in the previous section, you may have noticed the use
-of the command \cmd{url\{\}}.  This command comes as part of the \latex
+In the example of \sec{about-tables}, you may have noticed the use of the
+command \cmd{url\{\}}.  That command comes as part of the \latex
 \texttt{hyperref} package, and like the other packages mentioned in this
 section, it is also preloaded by \sbmlpkg.  It provides a number of
 facilities that are used to implement features of \sbmlpkg.  \tab{hyperref}
@@ -423,15 +478,14 @@ This is an example of content placed within an "example" environment.
 The \texttt{example} environment is particularly powerful.  Anything placed
 inside it will be taken literally---even \latex commands will be ignored,
 except for \cmd{end\{example\}}.  In fact, the entire contents of the
-document fragment shown in \sect{basic-structure}, including the
+document fragment shown in \sec{basic-structure}, including the
 \cmd{begin\{document\}} and \cmd{end\{document\}}, were all left unchanged
-within the \texttt{example} environment used to produce the example.
-
-Of course, sometimes you \emph{do} want an embedded \latex command to be
+within the \texttt{example} environment used to produce the example.  Of
+course, sometimes you \emph{do} want an embedded \latex command to be
 interpreted inside the \texttt{example} environment.  For those situations,
-surround the \latex sequence with vertical bar (\texttt{|}) characters.
-The vertical bar is defined by \sbmlpkg as the escape character for the
-\texttt{example} environment. 
+surround the \latex sequence with vertical bar (\texttt{|}) characters.  The
+vertical bar is defined as the escape character for the \texttt{example}
+environment.
 
 Finally, for those cases when it is more convenient to put the example
 contents in a separate file, \sbmlpkg provides the command
@@ -443,13 +497,19 @@ format the contents in the same style as the \texttt{example} environment.
 \subsection{Color}
 
 To help increase consistency between SBML specification documents, \sbmlpkg
-defines various custom color names that may be used with commands such as
+defines custom color names that may be used with commands such as
 \texttt{color}, \texttt{colorbox}, etc.  \tab{colors} lists these color
-names.
+names.  Some of the colors in \tab*{colors} are used by \sbmlpkg itself, for
+design elements such as section dividers and background colors.  Others
+sometimes prove useful in different contexts of a specification document, and
+still others are colors that were used in past SBML documentation and are
+retained in case they prove useful again in the future.
 
 \newcommand{\drawcol}[1]{\colorbox{#1}{\color{#1}\rule{10ex}{1ex}}}
 
 \begin{table}[hbt]
+  \renewcommand{\arraystretch}{1.05}
+  \vspace*{1em}
   \begin{edtable}{tabular}{lllll}
     \toprule
     \textbf{Color name}		& \textbf{Color sample} 	& \multicolumn{3}{c}{\textbf{RGB color value}} \\
@@ -459,6 +519,7 @@ names.
     \texttt{sbmlrowgray}	& \drawcol{sbmlrowgray}		& red = 0.94	& blue = 0.94	& green = 0.94 \\
     \texttt{sbmlchangedcolor}	& \drawcol{sbmlchangedcolor}	& red = 0.69	& blue = 0.19	& green = 0.376 \\
     \texttt{extremelylightgray}	& \drawcol{extremelylightgray}	& red = 0.97	& blue = 0.97	& green = 0.97 \\
+    \texttt{veryverylightgray}	& \drawcol{veryverylightgray}	& red = 0.95	& blue = 0.95	& green = 0.95 \\
     \texttt{verylightgray}	& \drawcol{verylightgray}	& red = 0.9	& blue = 0.9	& green = 0.9 \\
     \texttt{lightgray}		& \drawcol{lightgray}		& red = 0.8	& blue = 0.8	& green = 0.8 \\
     \texttt{mediumgray}		& \drawcol{mediumgray}		& red = 0.5	& blue = 0.5	& green = 0.5 \\
@@ -476,23 +537,17 @@ names.
   \label{colors}
 \end{table}
 
-Some of the colors in \tab{colors} are used by \sbmlpkg itself, for some of
-the design elements such as section dividers and background colors.  Others
-are colors that sometimes prove useful in different contexts of a
-specification document, and still others are colors that were used in past
-SBML documentation and are carried over in case they prove useful again in
-the future.
-
 When \notice a specification document is a revision of a previous document,
 it is the convention in SBML documentation to indicate text changes by
 coloring them in red.  For this purpose, \sbmlpkg defines a command and an
 environment.  The command \mbox{\texttt{\textbackslash
     changed\{}\emph{text}\texttt{\}}} causes \emph{text} to be written in
-red (or more precisely, the color defined by \cmd{sbmlchangedcolor}, which
-is a dark purple red), \changed{like this}.  It can be used for long
-stretches of text and include embedded spaces and formatting commands.
-Alternatively, for coloring even longer stretches of text and multiple
-paragraphs, you may prefer to use the environment \texttt{blockChanged}.
+red (or more precisely, the color named \val{sbmlchangedcolor}, which
+is defined by \sbmlpkg as a maroon red), \changed{like this}.  It can be used
+for long stretches of text and include embedded spaces and formatting
+commands. Alternatively, for coloring even longer stretches of text and
+multiple paragraphs, you may prefer to use the environment
+\texttt{blockChanged}.
 
 
 \subsection{Commands for SBML constructs}
@@ -516,11 +571,10 @@ The linking is implemented using the standard \latex \texttt{hyperref}
 package.
 
 In addition to these commands, \sbmlpkg provides other commands for
-typesetting primitive type names (such as \primtype{SId},
-\primtype{double}, and so on) and other entities and XML fragments.  The
-need for using these occurs routinely when writing SBML specifications.
-The commands are described in \sect{primtype} and \sect{formatting-xml}.
-
+typesetting primitive type names (such as \primtype{SId}, \primtype{double},
+and so on) and other entities and XML fragments.  They are described in
+\vrefrange{primtype}{formatting-xml}.  The need for using these occurs
+routinely when writing SBML specifications.
 
 \subsubsection{Predefined SBML Core object and type names}
 \label{predefined-classes}
@@ -532,7 +586,7 @@ character) to be typed beyond the name of the object itself.
 
 \begin{table}[htb]
   \rowcolors{2}{sbmlrowgray}{}
-  \renewcommand{\arraystretch}{0.95}
+  \renewcommand{\arraystretch}{1.05}
   \begin{edtable}{tabular}{ll}
     \toprule
     \textbf{Command}                      & \textbf{Object} \\
@@ -594,26 +648,30 @@ character) to be typed beyond the name of the object itself.
 \subsubsection{Defining new object names and types in package specifications}
 \label{defining-classes}
 
-When an SBML package specification document defines new object classes, it
-is useful to make all mentions of the class name be hyperlinks to the class
-definition in the document.  To this end, \sbmlpkg provides commands that
-can be used to create new \latex commands to define hyperlinked name
-references.  The purpose of these commands is to let package authors define
-commands of the form \cmd{\emph{ObjectName}} that print the name of the
-class and simultaneously make it a hyperlink to the sections in the
-document where \textsf{\textbf{ObjectName}} is defined.  They are best used
-conjunction with \latex's \cmd{newcommand} command:
+When an SBML package specification document defines new object classes, it is
+useful to make all mentions of the class name be hyperlinks to the class
+definition in the document.  To this end, \sbmlpkg provides commands that can
+be used to create new \latex commands to define hyperlinked name references.
+The purpose of these commands is to let package authors define commands of
+the form \cmd{\emph{ObjectName}} that print the name of the class and
+simultaneously make it a hyperlink to the sections in the document where
+\class{ObjectName} is defined.  These commands are best used conjunction with
+\latex's \cmd{newcommand} command, to define custom macros in your document.
+
+\clearpage 
+
+The first two commands in this category are \cmd{defRef} and \cmd{absDefRef}:
 
 \begin{description}[font=\normalfont\ttfamily,style=nextline]
 
-\item[\textbackslash defRef\{\emph{name}\}\{\emph{section}\}] Create a
+\item[\color{black}\textbackslash defRef\{\emph{name}\}\{\emph{section}\}] Create a
   hyperlinked reference to the section labeled \emph{section} and call it
   \emph{name}.  The reference is inserted at the point in the text where
   the \texttt{\textbackslash defRef} command is invoked.  This command is
   intended for references to regular (not abstract) classes; see the next
   command for abstract classes.
 
-\item[\textbackslash absDefRef\{\emph{name}\}\{\emph{section}\}] Create a
+\item[\color{black}\textbackslash absDefRef\{\emph{name}\}\{\emph{section}\}] Create a
   hyperlinked reference to the section labeled \emph{section} and call it
   \emph{name}.  The reference is inserted at the point in the text where
   the \texttt{\textbackslash defRef} command is invoked.  This command is
@@ -626,34 +684,37 @@ The following is an example of how the commands above may be used; this is
 taken straight from the source files of the SBML Level~3 Version~1 Core
 specification document:
 
-\begin{example}
+\begin{example}[style=latex]
 \newcommand{\SBase}{\absDefRef{SBase}{sec:sbase}\xspace}
 \newcommand{\SBML} {\defRef{SBML}{sec:sbml}\xspace}
 \newcommand{\Model}{\defRef{Model}{sec:model}\xspace}
 \end{example}
 
-The section labels ``\texttt{sec:base}'', ``\texttt{sec:sbml}'', etc., are
-defined using \latex's \cmd{label} command at the beginning of each section
-where the corresponding objects are defined.  (The command \cmd{xspace} is
-discussed in \sect{included-classes}.)
+In these particular cases, the section labels ``\texttt{sec:base}'',
+``\texttt{sec:sbml}'', etc., are defined using \latex's \cmd{label} command
+at the beginning of each section of the specification document where the
+corresponding objects are defined.  (In other words, everywhere a
+``\cmd{section}'' or ``\cmd{subsection}'' or similar command is used in the
+SBML Level~3 Version~1 Core document, it is followed with a ``\cmd{label}''.)
+The command \cmd{xspace} is discussed in \sec{included-classes}.
 
 Sometimes \notice it is desirable to write the names of object classes
-without introducing hyperlinks.  A common situation is when mentioning the
-names of the object classes or types in section headings.  In these
+\emph{without} introducing hyperlinks.  A common situation is when mentioning
+the names of the object classes or types in section headings.  In these
 situations, instead of using the \cmd{ObjectName} commands, you may use the
 following commands provided by \sbmlpkg:
 
 \begin{description}[font=\normalfont\ttfamily,style=nextline]
 
-\item[\textbackslash class\{\emph{name}\}] Typesets
-  \emph{name} in the same font style as used by \texttt{\textbackslash
-    defRef\{}\emph{name}\texttt{\}\{}\emph{section}\texttt{\}}, without
-  a hyperlink.
+\item[\cmd{class\{\emph{name}\}}] Typesets \emph{name} in the same font style
+  as used by \texttt{\textbackslash
+    defRef\{}\emph{name}\texttt{\}\{}\emph{section}\texttt{\}}, without a
+  hyperlink.
 
-\item[\textbackslash abstractclass\{\emph{name}\}] Typesets
-  \emph{name} in the same font style as used by \texttt{\textbackslash
-    absDefRef\{}\emph{name}\texttt{\}\{}\emph{section}\texttt{\}}, without
-  a hyperlink.
+\item[\cmd{abstractclass\{\emph{name}\}}] Typesets \emph{name} in the same
+  font style as used by \texttt{\textbackslash
+    absDefRef\{}\emph{name}\texttt{\}\{}\emph{section}\texttt{\}}, without a
+  hyperlink.
 
 \end{description}
 
@@ -672,42 +733,58 @@ document, package authors should use the \cmd{primtype} and
 
 \begin{description}[font=\normalfont\ttfamily,style=nextline]
 
-\item[\textbackslash primtype\{\emph{name}\}] Typesets
-  the name of a primitive data type \emph{name}.  SBML Level~3 Core also
-  defines and uses a number of primitive data types, but these do not have
-  separate commands in \sbmlpkg.  Instead, they should be written using the
-  command \mbox{\texttt{\textbackslash primtype\{}\emph{type}\texttt{\}}},
-  where \emph{type} is one of the following names:
+\item[\cmd{primtype\{\emph{name}\}}] Typesets the name of a primitive data
+  type \emph{name}.  SBML Level~3 Core also defines and uses a number of
+  primitive data types, but these do not have separate commands in \sbmlpkg.
+  Instead, they should be written using the command
+  \mbox{\cmd{primtype\{\emph{type}\}}}, where \emph{type} is one of the
+  following names:
 
-  \begin{center}\ttfamily
+  \begin{center}\ttfamily\color{black}
     \begin{edtable}{tabular}{llllll}
       boolean	& ID	& positiveInteger & SId  	& string	& UnitSIdRef\\
       double	& int	& SBOTerm	  & SIdRef	& UnitSId \\
     \end{edtable}
   \end{center}
 
-\item[\texttt{\textbackslash primtypeNC\{}\emph{name}\texttt{\}}] Like
-  \texttt{\textbackslash primtype}, but does not force the color of the
-  text to be black.  The main use of this variant of the command is when
-  writing the names of primitive types in the arguments to \latex
-  sectioning commands (e.g., \cmd{section}, \cmd{subsection} and the like),
-  to avoid the change in color that would otherwise occur in the document's
-  table of contents.  (The \cmd{primtype} command sets the color of the
-  text to pure black, to make the text stand out more in the document body.
-  The change of color would occur because the entries in the table of
+\item[\cmd{primtypeNC\{\emph{name}\}}] Like \cmd{primtype}, but does not
+  force the color of the text to be black.  The main use of this variant of
+  the command is when writing the names of primitive types in the arguments
+  to \latex sectioning commands (e.g., \cmd{section}, \cmd{subsection} and
+  the like), to avoid the change in color that would otherwise occur in the
+  document's table of contents.  (The \cmd{primtype} command sets the color
+  of the text to pure black, to make the text stand out more in the document
+  body.  The change of color would occur because the entries in the table of
   contents are all hyperlinks to the beginning of the sections, and
   hyperlinks are colored blue.)
 
 \end{description}
 
-For example, the sequence ``\mbox{\texttt{\textbackslash
-    primtype\{SId\}}}'' written somewhere in the body of a document will
-produce ``\primtype{SId}'' in the formatted output; by contrast, the
-following illustrates how to write a type name in a section heading:
+For example, the sequence ``\cmd{primtype\{SId\}}'' written somewhere in the
+body of a document will produce ``\primtype{SId}'' in the formatted output;
+by contrast, the following illustrates how to write a type name in a section
+heading:
 
-\begin{example}
+\begin{example}[style=latex]
 \subsection{This is the documentation for \primtypeNC{MySpecialSId}}
 \end{example}
+
+A \warning small spacing problem can occur when \cmd{primtypeNC} is used in
+\cmd{subsubsection} and \cmd{paragraph} titles: the content of the
+\cmd{primtypeNC} may end up too close to the preceding text in the section
+title.  The problem occurs because the typeface used for \cmd{subsubsection}
+and \cmd{paragraph} is slanted whereas the fixed-width typeface of
+\cmd{primtypeNC} is not.  To prevent the unattractive compressed-looking
+result, add a small amount of space (usually 1 point is sufficient) using
+\cmd{hspace}, like so:
+
+\begin{example}[style=latex]
+\subsubsection{This is the documentation for \hspace*{1pt}\primtypeNC{SomeOtherId}}
+\end{example}
+
+The above is typically not necessary in \cmd{section} or \cmd{subsection},
+nor when the invocation of \cmd{primtypeNC} occurs as the first thing in a
+\cmd{subsubsection}.
 
 
 \subsubsection{Commands for formatting in-text XML descriptions}
@@ -719,80 +796,64 @@ literal examples of XML.  These special commands are provided so in-text
 descriptions of XML constructs can be formatted in a way and attractive
 way:
 
-\begin{description}[font=\normalfont\ttfamily,style=nextline]
+\begin{description}[font=\normalfont\ttfamily\color{black},style=nextline]
 
-\item[\textbackslash token\{\emph{text}\}] Formats literal XML tokens, such
-  as attribute names.  Do not use this to format text with embedded spaces;
+\item[\cmd{token\{\emph{text}\}}] Formats literal XML tokens, such as
+  attribute names.  Do not use this to format text with embedded spaces;
   instead, use multiple \texttt{\textbackslash token} commands separated by
   spaces.
 
-\item[\textbackslash tokenNC\{\emph{text}\}] Like \texttt{\textbackslash
-    token}, but does not force the color of the text to be black.  The main
-  use of this variant of the command is when writing the names of primitive
-  types in the arguments to \latex sectioning commands (e.g., \cmd{section}
-  and the like), to avoid the change in color that would otherwise occur in
-  the document's table of contents.
+\item[\cmd{tokenNC\{\emph{text}\}}] Like \texttt{\textbackslash token}, but
+  does not force the color of the text to be black.  The main use of this
+  variant of the command is when writing the names of primitive types in the
+  arguments to \latex sectioning commands (e.g., \cmd{section} and the like),
+  to avoid the change in color that would otherwise occur in the document's
+  table of contents.
 
-\item[\textbackslash val\{\emph{text}\}] Format the value of an attribute.
-  This is essentially \cmd{token} but surrounded by double quotes.
+\item[\cmd{val\{\emph{text}\}}] Format the value of an attribute.  This is
+  essentially \cmd{token} but surrounded by double quotes.
 
-\item[\textbackslash uri\{\emph{text}\}] Format a URI.  This is essentially
-  \cmd{token} but surrounded by double quotes; it's provided to help make
-  the formatting of URIs in documents more consistent.
+\item[\cmd{uri\{\emph{text}\}}] Format a URI.  This is essentially \cmd{val};
+  it's provided make the formatting of URIs in documents more consistent.
 
 \end{description}
-
-Here is an example of using the commands above.  Suppose you wanted to
-write that a certain attribute named \texttt{attrib1} is to be assigned the
-value \val{10}.  The following input text,
-
-\begin{example}
-\token{attrib1}=\val{10}
-\end{example}
-
-will result in the following formatted output:
-
-\begin{center}
-\token{attrib1}=\val{10}
-\end{center}
 
 The command \cmd{token} and others above are only meant for single in-text
 mentions of tokens and XML attribute-value pairs.  They are not suitable
 for longer content; for those cases, use the \texttt{example} environment
-(\sect{example-env}).
+(see \sec*{example-env}).
 
 
 \subsection{Line numbers}
 \label{about-lineno}
 
 \sbmlpkg preloads the \latex package \texttt{lineno} and configures it to
-produce the line numbers that you see in the right column of every page.
-These line numbers are important for specification documents because they
-allow discussion and bug reports to refer to specific portions of the text
-more easily.  Crucially, lists of errata and other issues recognized
-\emph{after} a specification is released need ways of referring to precise
-locations in the specification document, and line numbers are invaluable
-for that purpose.
+produce the line numbers in the right column of every page.  The numbers are
+important for specification documents because they allow discussion and bug
+reports to refer to specific portions of the text.  Crucially, lists of
+issues recognized \emph{after} a specification is released need ways of
+referring to precise locations in the document, and line numbers are
+invaluable for that purpose.
 
-For \notice the most part, you needn't do anything to get line numbers to
-be added to your document.  There are exceptions: certain content such as
-tabular material and floats are not handled by \texttt{lineno} very well,
-and require manual intervention.  Some cases cannot be fixed at all,
-notably figures incorporated from external files, but tabular material is
-fixable.  To get line numbers to be displayed in tables, you will need to
-wrap all uses of \texttt{tabular} with the special environment
-\texttt{edtable}.  The basic idiom is the following:
+For \notice the most part, you do not need to do anything in your document to
+get line numbers to appear.  There are exceptions: certain content such as
+tabular material and floats are not handled by \texttt{lineno} very well, and
+require manual intervention.  Some cases cannot be fixed at all, notably
+figures incorporated from external files, but tabular material is fixable.
+To get line numbers to be displayed in tables, wrap all uses of
+\texttt{tabular} with the special environment \texttt{edtable}.  The basic
+idiom is the following:
 
-\begin{example}
-\begin{edtable}{tabular}{|\color{gray}\emph{...normal tabular column specifiers...}\color{\normaltextcolor}|}
-  |\color{gray}\emph{...tabular content...}\color{\normaltextcolor}|
+\begin{example}[style=latex]
+\begin{edtable}{tabular}{|\color{gray}\emph{...normal tabular column specifiers...}|}
+  |\color{gray}\emph{...tabular content...}|
 \end{edtable}
 \end{example}
 
 The \texttt{edtable} environment is able to wrap a number of standard
 \latex environments, of which \texttt{tabular} is probably the most useful
 for most kinds of tables.  Practical examples of using \texttt{edtable}
-appear below in other sections.
+appear elsewhere in this document.
 
 
 \subsection{SBML validation rules}
@@ -857,7 +918,7 @@ specifications documents:
 \subsection{Document flags and notes}
 \label{document-notes}
 
-Somtimes it is useful to flag content in a document to draw readers'
+Sometimes it is useful to flag content in a document to draw readers'
 attention to it.  It is also sometimes useful during the development of a
 document to be able to leave coments for coauthors and readers.  \sbmlpkg
 provides a few commands for these purposes.
@@ -865,16 +926,16 @@ provides a few commands for these purposes.
 \begin{description}[font=\normalfont\ttfamily,style=nextline]
 
 \item[\cmd{notice}] Puts \notice a hand pointer in the left margin
-  (illustrated at the left).  The symbol will always be printed.
+  (illustrated at the left).  The symbol will always be displayed.
 
 \item[\cmd{warning}] Puts \warning a warning sign in the left margin
-  (illustrated at the left).  The symbol will always be printed.
+  (illustrated at the left).  The symbol will always be displayed.
 
-\item[\cmd{draftnote\{\emph{text}\}}] Writes \draftnoteForced{The note
+\item[\cmd{draftnote\{\emph{text}\}}] Writes \draftnoteInternal{The note
     text will only appear for documents in draft mode.} the \emph{text} as a
   yellow margin note (illustrated at the left), but only if the document
   flag \texttt{[draftspec]} is given to the \cmd{documentclass} command.
-  If the flag is not given, nothing is printed in the margin.
+  If the flag is not given, nothing is displayed in the margin.
 
 \end{description}
 
@@ -894,7 +955,7 @@ document.
 
 % -----------------------------------------------------------------------------
 % \section{What \sbmlpkg provides: a concise reference}
-\section{Additional features of \sbmlpkg}
+\section{Additional features of \sbmlpkghead}
 \label{provides}
 % -----------------------------------------------------------------------------
 
@@ -903,15 +964,15 @@ document.
 This section describes some additional aspects of \sbmlpkg.
 
 
-\subsection{Options understood by \sbmlpkg}
+\subsection{Options understood by \sbmlpkghead}
 \label{pkg-options}
 
 A number of options may be given to \sbmlpkg in the \cmd{documentclass}
 command that begins a document.  Here follows a complete list:
 
-\begin{description}[font=\normalfont\ttfamily,style=nextline]
+\begin{description}[font=\normalfont\ttfamily\color{black},style=nextline]
 
-\item[\texttt{draftspec}] This option causes the front page of the document
+\item[draftspec] This option causes the front page of the document
   to contain the word ``DRAFT'' in large gray letters, and the footer of
   every page of the document to contain the word ``(DRAFT)''.  Authors should
   use this option until such time as the specification document is considered
@@ -958,7 +1019,7 @@ command that begins a document.  Here follows a complete list:
 % package* commands
 
 
-\subsection{Notable \latex packages preloaded by \sbmlpkg}
+\subsection{Notable \latex packages preloaded by \sbmlpkghead}
 \label{included-classes}
 
 As mentioned above, \sbmlpkg preloads many common \latex packages.  Some
@@ -979,7 +1040,7 @@ each one to learn more about them.  Documentation is available at CTAN
 \item \texttt{amssymb}: This package defines many symbols and special
   characters.  In \sbmlpkg, it is used to get the symbols defined by the
   validation rule commands \cmd{validRule}, \cmd{consistencyRule} and
-  \cmd{modelingRule} described in \sect{validation-rules}.
+  \cmd{modelingRule} described in \sec{validation-rules}.
 
 \item \texttt{amsmath}: This package defines many additional symbols and
   macros for mathematics.  It is not actually used in \sbmlpkg, but it is
@@ -992,7 +1053,9 @@ each one to learn more about them.  Documentation is available at CTAN
   environments.  It is particularly useful for the column formatting
   options it provides for the \texttt{tabular} environment. 
 
-\item \texttt{booktabs}: Mentioned in \sect{about-tables}, this \latex
+\item \texttt{bbding}: A font set that provides a variety of symbol glyphs.
+
+\item \texttt{booktabs}: Mentioned in \sec*{about-tables}, this \latex
   package defines the commands \cmd{toprule}, \cmd{bottomrule}, and
   \cmd{midrule} for produced more attractive and professional-looking
   tables.
@@ -1007,12 +1070,12 @@ each one to learn more about them.  Documentation is available at CTAN
 \item \texttt{graphicx}: A powerful and rich system for working with
   external graphics files in \latex documents. 
 
-\item \texttt{hyperref}: Mentioned in \sect{hyperlinks}, this package defines
+\item \texttt{hyperref}: Mentioned in \sec{hyperlinks}, this package defines
   commands for creating hyperlinks within and between documents.  \sbmlpkg
   uses it to define commands such as \cmd{fig} and \cmd{tab}.
 
 \item \texttt{lineno}: Used by \sbmlpkg to implement line numbers on the
-  page.  As mentioned in \sect{about-lineno}, not all line numbering can be
+  page.  As mentioned in \sec{about-lineno}, not all line numbering can be
   accomplished completely without user intervention; in some cases, authors
   must add special commands to get line numbers into content on the page.
 
@@ -1022,7 +1085,7 @@ each one to learn more about them.  Documentation is available at CTAN
 \item \texttt{multicol}: This provides an environment for putting multiple
   columns of text on a page.  In \sbmlpkg, it is used to produce two-column
   table of contents when the \texttt{[twocolumntoc]} option is given as
-  described in \sect{pkg-options}.
+  described in \sec{pkg-options}.
 
 \item \texttt{overpic}: The \texttt{overpic} package provides the ability
   to write \latex content on top of a figure.  This is particularly handy
@@ -1064,10 +1127,6 @@ each one to learn more about them.  Documentation is available at CTAN
   four''.
 
 \end{itemize}
-
-
-
-
 
 
 
