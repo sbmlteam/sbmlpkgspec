@@ -31,13 +31,8 @@
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 %% ============================================================================
 
-%% It would be so nice to be able to put the CVS/RCS 'Date' tag in the
-%% \filedate below.  Unfortunately, LaTeX will barf on the resulting string.
-
-\def\filedate{2012/01/27}
-
+\def\filedate{2012/07/23}
 \NeedsTeXFormat{LaTeX2e}
-
 \ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3 Package Specification Style]
 
 %% ----------------------------------------------------------------------------
@@ -74,7 +69,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{multicol}
 \RequirePackage{array}
-\RequirePackage[round]{natbib}
+\RequirePackage[round,sort]{natbib}
 \RequirePackage{xspace}
 \RequirePackage{scalefnt}
 \RequirePackage{pifont}
@@ -84,9 +79,12 @@
 \RequirePackage{fancybox}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{bbding}
 \RequirePackage{wasysym}
 \RequirePackage{enumitem}
 \RequirePackage{accsupp}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{suffix}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
@@ -139,7 +137,7 @@
     \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
     bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
     pdfhighlight=/O,linkcolor={sbmlblue},citecolor={sbmlblue},
-    urlcolor={sbmlblue},bookmarksnumbered]{hyperref}
+    urlcolor={sbmlblue},anchorcolor={sbmlblue},bookmarksnumbered]{hyperref}
   \fi
 
   % Although it may seem like we wouldn't need to load xcolor if
@@ -163,14 +161,13 @@
   \RequirePackage[rgb,dvipsnames,svgnames,hyperref,table]{xcolor}
 \fi
 
-% The following is best loaded after hyperref.
-\RequirePackage{nameref}
-
 % Load listings package & set some values.
+
 \RequirePackage{listings}
-\lstloadlanguages{Java,[Visual]C++,csh,Matlab,make,Perl,Python}
+\lstloadlanguages{bash,csh,XML}
 
 % Load draftwatermark if this document is a draft version.
+
 \if@draftspec
   \RequirePackage[firstpage]{draftwatermark}
   \SetWatermarkLightness{0.92}
@@ -186,7 +183,6 @@
 % This sets up Helvetica for headings and TX Typewriter for the tt font.
 % The font scaling is because the default Helvetica size is too big.
 
-\RequirePackage[T1]{fontenc}
 \RequirePackage{fourier}
 \RequirePackage{helvet}
 \ifgrayscalespec
@@ -260,13 +256,11 @@
      <-> ssub * txtt/b/sl%
 }{}
 
-
 % Adjustments due to quirks of the combination of fourier and amsmath:
 
 % Make the \big( braces regular height (default is too short):
 \delimiterfactor=1000
 \delimitershortfall=1pt
-
 
 %% ----------------------------------------------------------------------------
 %% Main code.
@@ -276,15 +270,16 @@
 
 % Local color definitions.
 
-\definecolor{sbmlblue}{rgb}{0.08,0.51,0.77}
+\definecolor{sbmlblue}{rgb}{0.07,0.50,0.78}
 \definecolor{sbmlgray}{gray}{0.7}
-\definecolor{sbmlrowgray}{gray}{0.94}
+\definecolor{sbmlrowgray}{gray}{0.96}
 \definecolor{extremelylightgray}{gray}{0.97}
+\definecolor{veryverylightgray}{gray}{0.95}
 \definecolor{verylightgray}{gray}{0.9}
 \definecolor{lightgray}{gray}{0.8}
 \definecolor{mediumgray}{gray}{0.5}
 \definecolor{darkgray}{gray}{0.3}
-\definecolor{almostblack}{gray}{0.22}
+\definecolor{almostblack}{gray}{0.23}
 \definecolor{lightyellow}{rgb}{0.98,0.94,0.7}
 \definecolor{verylightyellow}{rgb}{0.97,0.95,0.85}
 \definecolor{darkblue}{rgb}{0.1,0.4,0.55}
@@ -293,27 +288,26 @@
 % Color for marking changed text, conditional on whether gray scale mode is on.
 
 \ifgrayscalespec
-  \newcommand{\sbmlchangedcolor}{\normaltextcolor}
+  \newcommand{\@sbmlchangedcolor}{\normaltextcolor}
 \else
-  \definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
-  \newcommand{\sbmlchangedcolor}{Maroon}
+  \definecolor{@sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
+  \newcommand{\@sbmlchangedcolor}{Maroon}
 \fi
 
+% Macros for making consistent font, color, and other selections:
 
-% Macros for making consistent font, color, and other selections.
+\newcommand{\@normaltextcolor}{almostblack}
 
-\newcommand{\normaltextcolor}{almostblack}
-
-\newcommand{\changed}[1]{\textcolor{\sbmlchangedcolor}{#1}}
-\newenvironment{blockChanged}{\color{\sbmlchangedcolor}}{\color{\normaltextcolor}}
+\newcommand{\changed}[1]{\textcolor{\@sbmlchangedcolor}{#1}}
+\newenvironment{blockChanged}{\color{\@sbmlchangedcolor}}{\color{\@normaltextcolor}}
 
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
-\newcommand{\literalFont}[1]{\textcolor{black}{\textup{\texttt{#1}}}}
-\newcommand{\literalFontNC}[1]{\textup{\texttt{#1}}}
+\newcommand{\literalFont}[1]{\textcolor{black}{\textup{\ttfamily{#1}}}}
+\newcommand{\literalFontNC}[1]{\textup{\ttfamily{#1}}}
 
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
-\newcommand{\regularspacing}{\renewcommand{\baselinestretch}{1.0}}
+\newcommand{\regularspacing}{\renewcommand{\baselinestretch}{\normalbaselinestretch}}
 
 \ifgrayscalespec
   \newcommand{\defRef}[2]{\textbf{\class{#1}}\xspace}
@@ -323,14 +317,16 @@
   \newcommand{\absDefRef}[2]{\abstractclass{\hyperref[#2]{#1}}\xspace}
 \fi
 
-% Hyperref extras.
+\renewcommand{\texttt}[1]{\textcolor{black}{\ttfamily #1}}
+
+% Hyperref extras:
 
 \newcommand{\link}[2]{\literalFont{\href{#1}{#2}}}
 \newcommand{\mailto}[1]{\link{mailto:#1}{#1}}
 
 % 'lineno' package adjustments.
 % The BeginAccSupp business causes the line numbers to be ignored for
-% copy-paste operations in the PDF output
+% copy-paste operations in the PDF output.
 
 \setlength{\linenumbersep}{2.2em}
 \renewcommand{\thelinenumber}{%
@@ -339,7 +335,7 @@
   \EndAccSupp{}%
 }
 
-% 'booktabs' package adjustments.
+% 'booktabs' package adjustments:
 
 \setlength{\cmidrulewidth}{0.3 pt}
 \setlength{\lightrulewidth}{0.3 pt}
@@ -349,16 +345,16 @@
 % floats to the end of a document when they are somewhat big, which it will
 % do even if you put [htb] as the argument.
 
-\setcounter{topnumber}{2}
-\renewcommand\topfraction{1.0}
-\setcounter{bottomnumber}{2}
-\renewcommand\bottomfraction{1.0}
-\renewcommand\textfraction{0.0}
-\renewcommand\floatpagefraction{0.9}
+\setcounter{topnumber}{2}               % max num of floats at top of page
+\setcounter{bottomnumber}{2}            % max num of floats at bottom of page
+\renewcommand\topfraction{1.0}          % fraction that a top float can cover
+\renewcommand\bottomfraction{1.0}       % fraction a bottom float can cover
+\renewcommand\textfraction{0.0}        % >5% of a non-float page must be text
+\renewcommand\floatpagefraction{0.9}   % float page must be 95% full
 
 % Spacing of floats.
 
-\setlength{\intextsep}{17pt plus 6pt minus 4pt}
+\setlength{\intextsep}{20pt plus 4pt minus 0pt}
 
 % Make floats that appear alone on a page appear at the top, rather than
 % (as is the LaTeX default) appearing centered vertically on the page.
@@ -370,15 +366,20 @@
 % the dimensions like this.
 
 \setlength{\marginparwidth}{0.77in}
-\setlength{\marginparsep}{3pt}
+\setlength{\marginparsep}{4pt}
 
 \setlength{\oddsidemargin}{0 pt}
 \setlength{\evensidemargin}{0 pt}
-\setlength{\topmargin}{-8 ex}
+\setlength{\topmargin}{-0.5 in}
 \setlength{\voffset}{0 in}
 \setlength{\hoffset}{0 in}
 \setlength{\textwidth}{6.5 in}
-\setlength{\textheight}{9 in}
+\setlength{\textheight}{8.95 in}
+
+% Playing games with line spacing.
+
+\newcommand{\normalbaselinestretch}{1.04}
+\renewcommand{\baselinestretch}{\normalbaselinestretch}
 
 % Set the table of contents depth
 
@@ -406,6 +407,7 @@
   \ifx\@packageGeneralURL\undefined
   \relax
   \else
+  \vspace*{-1em}
   {\large SBML Level 3 Package Specification}\\[2em]
   \fi
   \scalebox{1}[0.9]{%
@@ -425,6 +427,7 @@
   \end{tabular}}}
 
 \def\maketableofcontents{%
+  \thispagestyle{plain}%
   \if@notoc
   \else
     \begingroup
@@ -555,13 +558,13 @@
   \begin{center}%
     \let \footnote \thanks
     \@puttitle
-    \vskip 2.5em%
+    \vskip 1.8em%
     {\lineskip .5em%
       \@putauthorinfo
       }%
     \vskip 2em%
     {\large\@packageVersionDate}%
-    \vskip 2em%
+    \vskip 1.5em%
     {\large\fbox{\@packageVersion}}%
   \end{center}%
   \par%
@@ -577,17 +580,17 @@
 % is used depending on the output we're producing. 
 
 \ifgrayscalespec
-  \newcommand{\badgebasefile}{sbml-badge-gray}
+  \newcommand{\@badgebasefile}{sbml-badge-gray}
 \else
-  \newcommand{\badgebasefile}{sbml-badge}
+  \newcommand{\@badgebasefile}{sbml-badge}
 \fi
 
 \ifpdf
   % Request the JPG format specifically, because the resulting
   % quality in the final output is best.
-  \newcommand{\SBMLbadge}{\badgebasefile.jpg}%
+  \newcommand{\SBMLbadge}{\@badgebasefile.jpg}%
 \else%
-  \newcommand{\SBMLbadge}{\badgebasefile.eps}%
+  \newcommand{\SBMLbadge}{\@badgebasefile.eps}%
 \fi
 
 
@@ -602,16 +605,40 @@
 % Set the page footers.
 % Must do this after setting the document title.
 
-\pagestyle{fancy}
 \fancyhf{}
-\renewcommand{\headrule}{}
-\cfoot{\small{Page \thepage\ of \pageref*{LastPage}}}
-\if@draftspec
-  \lfoot{\small{SBML Level 3 Package Specification (DRAFT)}}
-\else
-  \lfoot{\small{SBML Level 3 Package Specification}}
-\fi
-\rfoot{\small{\@packageTitle}}
+
+\newcommand{\@footchpsection}{Section \nouppercase{\leftmark}}
+\newcommand{\@footpage}{Page \thepage\ of \pageref*{LastPage}}
+
+\renewcommand{\footrule}{}
+
+\fancypagestyle{headerandfooter}{%
+  \renewcommand{\headrulewidth}{0.25pt}
+  \renewcommand{\headrule}{}
+  \lhead{}%
+  \rhead{\color{mediumgray}\small\textsf{Section \nouppercase{\rightmark}}}%
+  \cfoot{}%
+  \lfoot{\color{mediumgray}\small\textsf{\@footchpsection}}%
+  \rfoot{\color{mediumgray}\small\textsf{\@footpage}}%
+}
+
+\fancypagestyle{footeronly}{%
+  \renewcommand{\headrule}{}%
+  \lhead{}%
+  \rhead{}%
+  \lfoot{\color{mediumgray}\small\textsf{\@footchpsection}}%
+  \rfoot{\color{mediumgray}\small\textsf{\@footpage}}%
+}
+
+\fancypagestyle{plain}{%
+  \renewcommand{\headrule}{}%
+  \lhead{}%
+  \rhead{}%
+  \lfoot{}%
+  \rfoot{\color{mediumgray}\small\textsf{\@footpage}}%
+}
+
+\pagestyle{headerandfooter}
 
 
 % Definition of paragraph style.
@@ -626,29 +653,29 @@
 
 \setlength{\topsep}{0.3ex plus 0.1ex minus -0.2ex}
 
+\renewcommand{\labelitemi}{\raisebox{0.5pt}{\color{mediumgray}\footnotesize{$\blacksquare$}}}
+\renewcommand{\labelitemii}{\raisebox{-1.5pt}{\color{mediumgray}\LARGE$\bullet$}}
+\renewcommand{\labelitemiii}{\color{mediumgray}\tiny\DiamondSolid}
+\renewcommand{\labelitemiv}{$\diamond$}
 
 % Definition of section heading style.
 
-\newlength{\headingwidth}
-\setlength{\headingwidth}{\textwidth}
-\addtolength{\headingwidth}{33pt}
-
 \renewcommand{\section}{\@startsection%
-  {section}{1}{0pt \@plus 1ex}{-3ex \@plus -1ex \@minus -.2ex}%
-  {1.2ex}{\clearpage\hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{\normaltextcolor}%
-    \hspace*{-6.84in}\color{sbmlgray}{\rule[-0.8em]{6.84in}{0.1em}}\color{\normaltextcolor}%
+  {section}{1}{0pt \@plus 1ex}{-3.5ex \@plus -2ex \@minus -.2ex}%
+  {1.2ex}{\clearpage\thispagestyle{footeronly}\hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{\@normaltextcolor}%
+    \hspace*{-6.84in}\color{sbmlgray}{\rule[-0.8em]{6.84in}{0.1em}}\color{\@normaltextcolor}%
     \noindent\normalfont\LARGE\bfseries\sffamily\hspace*{-6.84in}}}
 
 \renewcommand{\subsection}{\@startsection%
-  {subsection}{2}{0pt}{-2ex \@plus 1ex \@minus -.2ex}%
+  {subsection}{2}{0pt}{-1.25ex \@plus 2ex \@minus -.2ex}%
   {0.1ex}{\Large\bfseries\sffamily}}
 
 \renewcommand{\subsubsection}{\@startsection%
-  {subsubsection}{3}{0pt}{-1.5ex \@plus 1ex \@minus -.2ex}%
+  {subsubsection}{3}{0pt}{-1ex \@plus 2ex \@minus -.2ex}%
   {0.4ex}{\large\bfseries\sffamily\slshape}}
 
 \renewcommand{\paragraph}{\@startsection%
-  {paragraph}{4}{0pt}{-1.25ex \@plus 1ex \@minus -.2ex}%
+  {paragraph}{4}{0pt}{-0.75ex \@plus 2ex \@minus -.2ex}%
   {0.4ex}{\normalsize\bfseries\sffamily\slshape}}
 
 % The References heading needs to be fixed up to account for shift
@@ -658,6 +685,7 @@
 
 \renewenvironment{thebibliography}[1]%
 {\section*{References}%
+  \pagestyle{plain}%
   \addcontentsline{toc}{section}{\protect\numberline{\refname}}%
   \list{\@biblabel{\@arabic\c@enumiv}}%
   {\settowidth\labelwidth{\@biblabel{#1}}%
@@ -748,6 +776,7 @@
 \newcommand{\captionsize}{\small}
 \newcommand{\captionfont}{\captionsize\sffamily\slshape}
 \newcommand{\captionlabelfont}{\captionsize\bfseries\slshape}
+\setlength{\abovecaptionskip}{1em}
 \newlength{\captionmargin}
 \setlength{\captionmargin}{6ex}
 
@@ -856,56 +885,42 @@
 
 
 % Code examples.
-% First set the properties we use for all calls to the listing environment.
+
+\newcommand{\code}[1]{\literalFont{#1}}
+\newcommand{\codeNC}[1]{\literalFontNC{#1}}
 
 \lstset{escapechar=|,%
     language=XML,%
     columns=fullflexible,%
     keepspaces=true,%
-    backgroundcolor=\color{extremelylightgray},%
+    backgroundcolor=\color{veryverylightgray},%
     rulecolor=\color{sbmlgray},%
     frame=single,%
-    basicstyle=\small\ttfamily,%
+    numberstyle=\tiny\sffamily,%
+    basicstyle=\small\ttfamily\color{black},%
+    keywordstyle=\ttfamily,%
     xleftmargin=3.5pt,%
     xrightmargin=3.5pt,%
     aboveskip=1\baselineskip,%
     belowskip=0.4\baselineskip,%
-    commentstyle=\footnotesize\itshape,%
+    commentstyle=\footnotesize\itshape\color{mediumgray},%
     tabsize=2,%
-    keywordstyle=\ttfamily}
+    captionpos=b}
+
+\lstdefinestyle{XML}{%
+    language=XML}
+
+\lstdefinestyle{bash}{%
+    language=bash}%
 
 \newcommand{\examplespacing}{\renewcommand{\baselinestretch}{0.88}}
 
-\lstnewenvironment{example}
-  {\examplespacing \csname lst@SetFirstLabel\endcsname}
+\lstnewenvironment{example}[1][]
+  {\lstset{#1}\examplespacing \csname lst@SetFirstLabel\endcsname}
   {\regularspacing \csname lst@SaveFirstLabel\endcsname}
 
-\newcommand{\exampleFile}[1]{\examplespacing\lstinputlisting{#1}\regularspacing}
-
-
-% The font adjustments on the hline's below are very dependent on the
-% font in use.  Use 1.2em for Helvetica, 0.98em (1st) 0.95 (2nd) for
-% the default Latex sans serif.
-
-\newenvironment{classbox}[1]{%
-  \sffamily%
-  \small%
-  \setlength{\arrayrulewidth}{0.5pt}
-  \begin{tabular}[t]{|l|}
-    \hline \\[-1.2em]
-    \multicolumn{1}{|c|}{\textbf{#1}}\\
-    \hline \\[-1.2em]}
-{\hline\end{tabular}}
-
-\newcommand{\emptyClassbox}[1]{%
-  \sffamily%
-  \small%
-  \setlength{\arrayrulewidth}{0.5pt}%
-  \begin{tabular}[t]{|l|}%
-    \hline \\[-1.2em]
-    \multicolumn{1}{|c|}{\textbf{#1}}\\
-    \hline
-  \end{tabular}}
+\newcommand{\exampleFile}[2][numbers=left,style=XML]{%
+  \lstset{#1}\examplespacing\lstinputlisting{#2}\regularspacing}
 
 
 % Margin note commands.
@@ -913,8 +928,8 @@
 
 \reversemarginpar  % Want these be put on the left, not the right.
 
-\newcommand{\notice}{\marginpar{\hspace*{34pt}\raisebox{-0.5ex}{\Large\ding{43}}}}
-\newcommand{\warning}{\marginpar{\hspace*{34pt}{\large\danger}}}
+\newcommand{\notice}{\marginpar{\hspace*{34pt}\raisebox{-0.5ex}{\color{black}\Large\ding{43}}}}
+\newcommand{\warning}{\marginpar{\hspace*{34pt}{\color{red}\large\danger}}}
 
 % Version using todonotes.
 % Todonotes is nice and offers things like a list of notes, but it uses
@@ -933,11 +948,11 @@
 % \newcommand{\draftnote}[1]{\todo[backgroundcolor=lightyellow,%
 %  bordercolor=lightgray,linecolor=mediumgray,\sbmlshownotes]{\textit{#1}}}
 
-\newcommand{\draftnoteForced}[1]{\mbox{}\marginpar{\hspace{0pt}\fcolorbox{Gold}{lightyellow}
+\newcommand{\@draftnoteForced}[1]{\mbox{}\marginpar{\hspace{0pt}\fcolorbox{Gold}{lightyellow}
     {\scriptsize\begin{minipage}[t]{0.65in}\raggedright\textit{#1}\end{minipage}}}}
 
 \if@draftspec
-  \newcommand{\draftnote}[1]{\draftnoteForced{#1}}
+  \newcommand{\draftnote}[1]{\@draftnoteForced{#1}}
 \else
   \newcommand{\draftnote}[1]{}
 \fi
@@ -954,16 +969,89 @@
   {\end{eqnarray*}\end{linenomath}\par\vspace*{-0.7em}}
 
 
-% Figure and table references.
+% Cross-references.
+%
+% We load the varioref package and define a set of macros for referring to
+% floats and sections in a consistent way, such that the entire reference
+% ("Section X", "Figure Y", etc.) is made into a hyperlink -- not only "X"
+% and "Y", as would be the case with using the normal approach of writing
+% "Section~\vref{...}".  Since all figure, table and section number
+% references are always capitalized (they are the proper names of the
+% objects, after all), the problem of creating a macro is simplified.
+% SBMLPkgSpec defines the following for this purpose:
+%
+%   \fig{...}
+%   \tab{...}
+%   \sec{...}
+%
+% In addition, it defines starred versions of the above:
+%
+%   \fig*{...}
+%   \tab*{...}
+%   \sec*{...}
+%
+% The starred versions are useful when you have two or more references in
+% the same paragraph to a float or section that is located elsewhere in the
+% document, to avoid having text like the following happen:
+%
+%   "In Figure 2 on the next page, blah blah blah.  Figure 2 on the
+%   following page also blah blah blah."
+%
+% Using the unstarred version for the first reference and starred version
+% for subsequent references avoids this, and will produce text like this:
+% 
+%   "In Figure 2 on the next page, blah blah blah.  Figure 2 also blah
+%   blah blah."
+%
+% Note: this overrides the definition of \sec{...} from the AMS math
+% package. I decided this is likely to be acceptable to users because
+% in SBML's domain of activity, it is very unlikely that someone would
+% write a mathematical formula using the \sec command in a latex document
+% specifying an SBML Level 3 package.
+%
+% As an alternative, the following plain varioref macros will work:
+%
+% * Use \vref{...} for everything and it will insert Figure~X, Table~Y,
+%   Section~Z, etc., as appropriate for the reference.  You do not need to
+%   add the object name; in other words, don't write "Section~\vref{foo}",
+%   write just "\vref{foo}".
+%
+% * Use \vref*{...} if the reference is in parentheses, like "(\vref*{...})".
+%
+% * At the beginning of a paragraph (and ONLY there), use \Vref*{...}.
+%
+% * For a range, use \vrefrange{startlabel}{endlabel}.
+%
+% To see actual examples of using this, grep for "vref" in *.tex in the
+% JSBML User Guide directory.
 
-\newcommand{\fig}[1]{Figure~\vref{#1}\xspace}
-\newcommand{\tab}[1]{Table~\vref{#1}\xspace}
-\newcommand{\sect}[1]{Section~\ref{#1}\xspace}
+\labelformat{chapter}{Chapter~#1}
+\labelformat{section}{Section~#1}
+\labelformat{subsection}{Section~#1}
+\labelformat{subsubsection}{Section~#1}
+\labelformat{paragraph}{Section~#1}
+\labelformat{table}{Table~#1}
+\labelformat{figure}{Figure~#1}
+
+\newcommand{\@commonFloatRefNoStar}[1]{\xspace\Vref*{#1}\xspace}
+\newcommand{\@commonFloatRefStar}[1]{\xspace\ref{#1}\xspace}
+
+\newcommand{\fig}[1]{\@commonFloatRefNoStar{#1}}
+\WithSuffix\newcommand\fig*[1]{\@commonFloatRefStar{#1}}
+
+\newcommand{\tab}[1]{\@commonFloatRefNoStar{#1}}
+\WithSuffix\newcommand\tab*[1]{\@commonFloatRefStar{#1}}
+
+\renewcommand{\sec}[1]{\@commonFloatRefNoStar{#1}}
+\WithSuffix\newcommand\sec*[1]{\@commonFloatRefStar{#1}}
+
+\newcommand{\sect}[1]{\@commonFloatRefNoStar{#1}}
+\WithSuffix\newcommand\sect*[1]{\@commonFloatRefStar{#1}}
 
 
 % Misc.
 
-\newcommand{\dblquote}    {\verb|"|}
+\newcommand{\dblquote}    {\verb|"|} %"
 
 
 % Here we list common SBML entities, to get consistent font & appearance.
@@ -1022,7 +1110,7 @@
 % Final settings before the body begins.
 %
 
-\color{\normaltextcolor}                % Default body font color.
+\color{\@normaltextcolor}                % Default body font color.
 
 %% -----------------------------------------------------------------------------
 %% End of file `cekarticle.cls'.
