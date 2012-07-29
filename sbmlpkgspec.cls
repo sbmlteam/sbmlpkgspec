@@ -4,7 +4,7 @@
 %% Author(s):    Michael Hucka <mhucka@caltech.edu>
 %% Organization: California Institute of Technology
 %% Date created: 2011-08-11
-%% Home page:    http://sbml.org/Documents/Specifications/LaTeX
+%% https://sbml.svn.sourceforge.net/svnroot/sbml/trunk/project/tex/sbmlpkgspec
 %%
 %% Copyright 2007-2012 California Institute of Technology, Pasadena, CA, USA.
 %% 
@@ -33,7 +33,8 @@
 
 \def\filedate{2012/07/29}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3 Package Specification Style]
+\ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3
+Package Specification Style]
 
 %% ----------------------------------------------------------------------------
 %% Package references and options.
@@ -599,7 +600,12 @@
 % document is located (but obviously, it only works for certain path
 % combinations -- it's a total hack).
 
-\graphicspath{{./logos/}{../tex/logos/}{../project/tex/logos/}{../../project/tex/logos/}{../../../project/tex/logos/}{../../../../project/tex/logos/}}
+\graphicspath{{./logos/}
+  {../tex/logos/}
+  {../project/tex/logos/}
+  {../../project/tex/logos/}
+  {../../../project/tex/logos/}
+  {../../../../project/tex/logos/}}
 
 
 % Set the page footers.
@@ -662,7 +668,8 @@
 
 \renewcommand{\section}{\@startsection%
   {section}{1}{0pt \@plus 1ex}{-3.5ex \@plus -2ex \@minus -.2ex}%
-  {1.2ex}{\clearpage\thispagestyle{footeronly}\hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{normaltextcolor}%
+  {1.2ex}{\clearpage\thispagestyle{footeronly}%
+    \hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{normaltextcolor}%
     \hspace*{-6.84in}\color{sbmlgray}{\rule[-0.8em]{6.84in}{0.1em}}\color{normaltextcolor}%
     \noindent\normalfont\LARGE\bfseries\sffamily\hspace*{-6.84in}}}
 
