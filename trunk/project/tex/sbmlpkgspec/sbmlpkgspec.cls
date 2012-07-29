@@ -31,7 +31,7 @@
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 %% ============================================================================
 
-\def\filedate{2012/07/23}
+\def\filedate{2012/07/29}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3 Package Specification Style]
 
@@ -85,6 +85,7 @@
 \RequirePackage{accsupp}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{suffix}
+\RequirePackage{varwidth}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
@@ -520,7 +521,7 @@
   \ifx\@frontNotice\undefined
   \relax
   \else
-    {\cornersize{0.25}\color{DarkRed}\ovalbox{\begin{minipage}{5.45in}\@frontNotice\end{minipage}}}%
+    {\cornersize{0.25}\color{DarkRed}\ovalbox{\begin{varwidth}{0.9\textwidth}\centering\@frontNotice\end{varwidth}}}%
   \fi
   \vfill
   \ifx\@packageGeneralURL\undefined
