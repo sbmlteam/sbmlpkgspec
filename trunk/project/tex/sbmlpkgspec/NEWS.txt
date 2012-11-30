@@ -1,4 +1,16 @@
 =============================================================================
+News for version 1.3.2 (2012-11-30 <mhucka@caltech.edu>)
+=============================================================================
+
+* Changed order in which date and package version are shown on the front
+  page.  The new way seems more logical (IMHO).
+
+* Fixed bug in \exampleFile that caused it to print redundant line numbers
+  along the left-hand side.
+
+* Lightened the dots in the dotted lines in the table of contents.
+
+=============================================================================
 News for version 1.3.1 (2012-07-29 <mhucka@caltech.edu>)
 =============================================================================
 
