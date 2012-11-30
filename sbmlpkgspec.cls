@@ -31,7 +31,7 @@
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 %% ============================================================================
 
-\def\filedate{2012/07/29}
+\def\filedate{2012/11/30}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3
 Package Specification Style]
@@ -564,9 +564,9 @@ Package Specification Style]
       \@putauthorinfo
       }%
     \vskip 2em%
-    {\large\@packageVersionDate}%
-    \vskip 1.5em%
     {\large\fbox{\@packageVersion}}%
+    \vskip 1.5em%
+    {\large\@packageVersionDate}%
   \end{center}%
   \par%
   \vskip 1.5em%
@@ -750,10 +750,11 @@ Package Specification Style]
      \@tempdima #3\relax
      \advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
      {\sffamily #4}\nobreak
+     {\color{mediumgray}
      \leaders\hbox{$\m@th
         \mkern \@dotsep mu\hbox{.}\mkern \@dotsep
         mu$}\hfill
-     \nobreak
+     }\nobreak
      \hb@xt@\@pnumwidth{\hfil\normalfont\sffamily #5}%
      \par}%
   \fi}
@@ -926,7 +927,7 @@ Package Specification Style]
   {\lstset{#1}\examplespacing \csname lst@SetFirstLabel\endcsname}
   {\regularspacing \csname lst@SaveFirstLabel\endcsname}
 
-\newcommand{\exampleFile}[2][numbers=left,style=XML]{%
+\newcommand{\exampleFile}[2][style=XML]{%
   \lstset{#1}\examplespacing\lstinputlisting{#2}\regularspacing}
 
 
