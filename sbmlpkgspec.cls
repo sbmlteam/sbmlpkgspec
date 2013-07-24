@@ -1,12 +1,10 @@
-%% ============================================================================
-%% Filename:     sbmlpkgspec.cls
+%% Filename:     sbmlpkgspec.cls                         -*- mode: latex -*-
 %% Description:  LaTeX style file for SBML Level 3 package specifications
 %% Author(s):    Michael Hucka <mhucka@caltech.edu>
 %% Organization: California Institute of Technology
 %% Date created: 2011-08-11
-%% https://sbml.svn.sourceforge.net/svnroot/sbml/trunk/project/tex/sbmlpkgspec
 %%
-%% Copyright 2007-2012 California Institute of Technology, Pasadena, CA, USA.
+%% Copyright 2007-2013 California Institute of Technology, Pasadena, CA, USA.
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
@@ -29,7 +27,6 @@
 %% You should have received a copy of the GNU Lesser General Public License
 %% along with this library; if not, write to the Free Software Foundation,
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
-%% ============================================================================
 
 \def\filedate{2012/11/30}
 \NeedsTeXFormat{LaTeX2e}
@@ -137,7 +134,6 @@ Package Specification Style]
     bookmarksnumbered=true]{hyperref}
   \else
     \RequirePackage[pdftex,breaklinks=true,colorlinks=true,
-    bookmarks=true,bookmarksopen=true,bookmarksopenlevel=2,
     pdfhighlight=/O,linkcolor={sbmlblue},citecolor={sbmlblue},
     urlcolor={sbmlblue},anchorcolor={sbmlblue},bookmarksnumbered]{hyperref}
   \fi
