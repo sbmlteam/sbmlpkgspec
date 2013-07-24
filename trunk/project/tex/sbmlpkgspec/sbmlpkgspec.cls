@@ -1045,7 +1045,7 @@ Package Specification Style]
 \labelformat{paragraph}{\sectionlabel~#1}
 
 \newcommand{\@commonRefNoStar}[1]{\xspace\Vref*{#1}\xspace}
-\newcommand{\@commonRefStar}[1]{\xspace\ref{#1}\xspace}
+\newcommand{\@commonRefStar}[1]{\ref{#1}\xspace}
 
 \newcommand{\fig}[1]{\normallabels\@commonRefNoStar{#1}}
 \WithSuffix\newcommand\fig*[1]{\normallabels\@commonRefStar{#1}}
