@@ -388,16 +388,10 @@ references.
     & Table X on page Y\\
     \texttt{\textbackslash sec\{}\emph{label\,}\texttt{\}}
     & Section reference
-    & Section X on page Y\\[0.25em]
-    \texttt{\textbackslash fig*\{}\emph{label\,}\texttt{\}}
-    & Figure reference
-    & Figure X\\
-    \texttt{\textbackslash tab*\{}\emph{label\,}\texttt{\}}
-    & Table reference
-    & Table X\\
-    \texttt{\textbackslash sec*\{}\emph{label\,}\texttt{\}}
-    & Section reference
-    & Section X\\
+    & Section X on page Y\\
+    \texttt{\textbackslash apdx\{}\emph{label\,}\texttt{\}}
+    & Appendix reference
+    & Appendix X on page Y\\
     \bottomrule
   \end{edtable}
   \caption{Commands for referring to figures and other entities in an
@@ -406,16 +400,20 @@ references.
   \label{ref-commands}
 \end{table}
 
-As shown in \tab{ref-commands}, the \sbmlpkg class also defines starred
-versions of the commands.  These are useful when the item being referenced is
-located on another page, and you want to refer to it more than once from the
-text of a given paragraph.  \notice The regular version of the commands such
-as ``\texttt{\textbackslash fig\{}\emph{label\,}\texttt{\}}'' will always
-produce a page reference (e.g., ``see Figure~2.5 on the following page''),
-which becomes rather tedious to read if there is more than one occurrence of
-it in the same paragraph.  To avoid that, use the normal version of the
-command the first time you need it in a paragraph, and then use the starred
-version on all subsequent occasions within the same paragraph.
+The \sbmlpkg class also defines starred versions of the commands, that is,
+\texttt{\textbackslash fig*\{}\emph{label\,}\texttt{\}},
+\texttt{\textbackslash tab*\{}\emph{label\,}\texttt{\}},
+\texttt{\textbackslash sec*\{}\emph{label\,}\texttt{\}}, and
+\texttt{\textbackslash apdx*\{}\emph{label\,}\texttt{\}}.  These are useful
+when the item being referenced is located on another page, and you want to
+refer to it more than once from the text of the same paragraph. The regular
+version of the commands such as ``\texttt{\textbackslash
+  fig\{}\emph{label\,}\texttt{\}}'' will always produce a page reference
+(e.g., ``see Figure~2.5 on the following page''), which becomes rather
+tedious to read if there is more than one occurrence of it in the same
+paragraph.  \notice To avoid that, use the normal version of the command the
+first time you need it in a paragraph, and then use the starred version on
+all subsequent occasions within the same paragraph.
 
 It is worth noting that all the commands are clever enough to avoid writing
 ``... on page Y'' when the item in question is on the same page as the
@@ -424,7 +422,9 @@ automatically.
 
 To state a range (e.g., to produce the text ``Section X to Y''), use the
 command \texttt{\textbackslash
-  vrefrange\{}\emph{label1\,}\texttt{\}\{}\emph{label2\,}\texttt{\}}.
+  vrefrange\{}\emph{label1\,}\texttt{\}\{}\emph{label2\,}\texttt{\}}, where
+\emph{label1} and \emph{label2} are the labels of the starting and ending
+items.  These can be figures, sections, etc.
 
 
 \subsection{Hyperlinks}
