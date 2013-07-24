@@ -298,9 +298,8 @@ solely for aesthetic reasons; the tighter letter spacing of the sans serif
 font, and the smaller font size, makes it easier for authors to fit material
 into tables and figures.  The specific choice of Helvetica is also driven in
 part by consideration of the tools available to authors.  In particular, it
-is today common to find online drawing tools that offer Helvetica as a font
-choice.  (In fact, the online drawing system in Google Docs \emph{only}
-offers Helvetica.)
+is today common to find online drawing tools that offer Helvetica (or at
+least the similar-looking, albeit inferior, Arial) as a font choice.
 
 \sbmlpkg also preloads the \texttt{booktabs} package.  This provides
 \cmd{toprule}, \cmd{midrule} and \cmd{bottomrule} (among others), which can
@@ -324,11 +323,6 @@ be used to produce attractive tables.  The following text is what produced
 \end{table}
 \end{example}
 
-\sbmlpkg also redefines the table and figure environments to place their
-content inside a \latex \texttt{centering} environment.  This causes the
-content to be centered on the page, and consequently, you do not need to add
-centering commands to your floats.
-
 In the case of long tables, readability is often enhanced by adding a
 background color to every other row.  Once again, \sbmlpkg preloads a
 \latex package (in this case, \texttt{xcolor} with the \texttt{[table]}
@@ -348,8 +342,8 @@ which was produced using the following sequence:
 \begin{example}[style=latex]
 \begin{table}[hbt]
   \rowcolors{2}{sbmlrowgray}{}
-  \begin{edtable}{tabular}{ll}
-  ...
+  \begin{edtable}{tabular}{ll}|\vspace*{-0.4ex}|
+  ...|\vspace*{-0.4ex}|
   \end{edtable}
 \end{table}
 \end{example}
@@ -357,8 +351,13 @@ which was produced using the following sequence:
 Note \notice that tables are \emph{not} defined by \sbmlpkg to use
 alternate-row background coloring by default, because in some situations
 (such as short tables, or tables containing color), alternate row coloring is
-unnecessary and distracting.  You must add the \cmd{rowcolors} manually, when
-it's appropriate.
+unnecessary and distracting.  You must add the \cmd{rowcolors} command
+manually, where it's appropriate.
+
+Finally, \sbmlpkg redefines the table and figure environments to place
+contents inside a \latex \texttt{centering} environment, causing the content
+to be centered on the page.  You do not need to add centering commands
+yourself.
 
 
 \subsection{Cross-references to tables, figures and sections}
@@ -418,11 +417,14 @@ it in the same paragraph.  To avoid that, use the normal version of the
 command the first time you need it in a paragraph, and then use the starred
 version on all subsequent occasions within the same paragraph.
 
-It may be worth mentioning that the page reference commands are clever enough
-to avoid writing ``... on page Y'' when the object in question is on the same
-page as the reference.  Instead, the commands will only write ``Figure~X'' in
-automatically that situation.  (The \latex \texttt{varioref} package is
-marvelous in that regard.)
+It is worth noting that all the commands are clever enough to avoid writing
+``... on page Y'' when the item in question is on the same page as the
+reference.  The commands will write only ``Figure~X'' in that situation
+automatically.
+
+To state a range (e.g., to produce the text ``Section X to Y''), use the
+command \texttt{\textbackslash
+  vrefrange\{}\emph{label1\,}\texttt{\}\{}\emph{label2\,}\texttt{\}}.
 
 
 \subsection{Hyperlinks}
