@@ -1,4 +1,32 @@
 =============================================================================
+News for version 1.5.0 (2013-11-05 <mhucka@caltech.edu>)
+=============================================================================
+
+* SBMLPkgClass now preloads the LaTeX "rotating" package.  This was done
+  because there is some obscure interaction with something else loaded by
+  sbmlpkgclass.cls, the result of which is that rotated figures appear
+  shifted in position on the page instead of being centered.  To avoid this
+  behavior, one has to set an obscure parameter in the "rotating" package.
+  Asking users of SBMLPkgClass to know about this is probably unreasonable,
+  so to make it easier on users, we preload the "rotating" package and set
+  the parameter in sbmlpkgclass.cls.  Thanks to Maciej Swat for reporting
+  the problem.
+
+=============================================================================
+News for version 1.4.0 (2013-07-24 <mhucka@caltech.edu>)
+=============================================================================
+
+* Added a new command, \apdx{...}, for referring to appendices, so that they
+  come out as "Appendix X" instead of "Section A".
+
+* The settings for hyperref caused the PDF to always open on the front page,
+  so when people quit their PDF viewer and restarted it, the viewer wouldn't
+  go back to the page where they left.  Fixed.
+
+* Fixed a bug that caused an extra space to be added in front of the starred
+  versions of the section reference commands like \sec*{...}.
+
+=============================================================================
 News for version 1.3.2 (2013-07-24 <mhucka@caltech.edu>)
 =============================================================================
 
