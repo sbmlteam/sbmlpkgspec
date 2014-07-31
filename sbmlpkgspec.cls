@@ -278,8 +278,6 @@ Package Specification Style]
 %% Main code.
 %% ----------------------------------------------------------------------------
 
-\raggedbottom
-
 % Local color definitions.
 
 \definecolor{sbmlblue}{rgb}{0.07,0.50,0.78}
@@ -337,7 +335,7 @@ Package Specification Style]
 
 % 'lineno' package adjustments.
 % The BeginAccSupp business causes the line numbers to be ignored for
-% copy-paste operations in the PDF output.
+% copy-paste operations in the PDF output, at least in Acrobat.
 
 \setlength{\linenumbersep}{2.2em}
 \renewcommand{\thelinenumber}{%
@@ -1137,7 +1135,8 @@ Package Specification Style]
 % Final settings before the body begins.
 %
 
-\color{normaltextcolor}                % Default body font color.
+\raggedbottom
+\color{normaltextcolor}                % Default body text color.
 
 %% -----------------------------------------------------------------------------
 %% End of file `cekarticle.cls'.
