@@ -4,7 +4,7 @@
 %% Organization: California Institute of Technology
 %% Date created: 2011-08-11
 %%
-%% Copyright 2007-2013 California Institute of Technology, Pasadena, CA, USA.
+%% Copyright 2007-2014 California Institute of Technology, Pasadena, CA, USA.
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
