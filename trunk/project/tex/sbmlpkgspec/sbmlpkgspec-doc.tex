@@ -507,6 +507,18 @@ sometimes prove useful in different contexts of a specification document, and
 still others are colors that were used in past SBML documentation and are
 retained in case they prove useful again in the future.
 
+When \notice a specification document is a revision of a previous document,
+it is the convention in SBML documentation to indicate text changes by
+coloring them in red.  For this purpose, \sbmlpkg defines a command and an
+environment.  The command \mbox{\texttt{\textbackslash
+    changed\{}\emph{text}\texttt{\}}} causes \emph{text} to be written in red
+(or more precisely, the color named \val{sbmlchangedcolor}, which is defined
+by \sbmlpkg as a maroon red), \changed{like this}.  It can be used for long
+stretches of text and include embedded spaces and formatting
+commands. Alternatively, for coloring even longer stretches of text and
+multiple paragraphs, you may prefer to use the environment
+\texttt{blockChanged}.
+
 \newcommand{\drawcol}[1]{\colorbox{#1}{\color{#1}\rule{10ex}{1ex}}}
 
 \begin{table}[hbt]
@@ -538,18 +550,6 @@ retained in case they prove useful again in the future.
     \texttt{xcolor}.}
   \label{colors}
 \end{table}
-
-When \notice a specification document is a revision of a previous document,
-it is the convention in SBML documentation to indicate text changes by
-coloring them in red.  For this purpose, \sbmlpkg defines a command and an
-environment.  The command \mbox{\texttt{\textbackslash
-    changed\{}\emph{text}\texttt{\}}} causes \emph{text} to be written in red
-(or more precisely, the color named \val{sbmlchangedcolor}, which is defined
-by \sbmlpkg as a maroon red), \changed{like this}.  It can be used for long
-stretches of text and include embedded spaces and formatting
-commands. Alternatively, for coloring even longer stretches of text and
-multiple paragraphs, you may prefer to use the environment
-\texttt{blockChanged}.
 
 The insertion of new sections in old documents presents another challenge:
 the section \emph{numbers} of all sections after the inserted text will end
