@@ -52,8 +52,8 @@
 \begin{document}
 
 \packageTitle{\latex Class for SBML Package Specifications}
-\packageVersion{Version 1.5.0}
-\packageVersionDate{5 November 2013}
+\packageVersion{Version 1.6.0}
+\packageVersionDate{6 August 2014}
 
 \title{\sbmlpkghead: A \latex Class for SBML Level~3
   \texorpdfstring{\\[3pt]}{}\mbox{Package Specification Documents}}
@@ -498,7 +498,7 @@ format the contents in the same style as the \texttt{example} environment.
 
 \subsection{Color}
 
-To help increase consistency between SBML specification documents, \sbmlpkg
+To increase consistency between SBML specification documents, \sbmlpkg
 defines custom color names that may be used with commands such as
 \texttt{color}, \texttt{colorbox}, etc.  \tab{colors} lists these color
 names.  Some of the colors in \tab*{colors} are used by \sbmlpkg itself, for
@@ -511,7 +511,6 @@ retained in case they prove useful again in the future.
 
 \begin{table}[hbt]
   \renewcommand{\arraystretch}{1.05}
-  \vspace*{1em}
   \begin{edtable}{tabular}{lllll}
     \toprule
     \textbf{Color name}		& \textbf{Color sample} 	& \multicolumn{3}{c}{\textbf{RGB color value}} \\
@@ -520,6 +519,7 @@ retained in case they prove useful again in the future.
     \texttt{sbmlgray}		& \drawcol{sbmlgray}		& red = 0.7	& blue = 0.7	& green = 0.7 \\
     \texttt{sbmlrowgray}	& \drawcol{sbmlrowgray}		& red = 0.94	& blue = 0.94	& green = 0.94 \\
     \texttt{sbmlchangedcolor}	& \drawcol{sbmlchangedcolor}	& red = 0.69	& blue = 0.19	& green = 0.376 \\
+    \texttt{sbmlnormaltextcolor}& \drawcol{sbmlnormaltextcolor}	& red = 0.27	& blue = 0.27	& green = 0.27 \\
     \texttt{extremelylightgray}	& \drawcol{extremelylightgray}	& red = 0.97	& blue = 0.97	& green = 0.97 \\
     \texttt{veryverylightgray}	& \drawcol{veryverylightgray}	& red = 0.95	& blue = 0.95	& green = 0.95 \\
     \texttt{verylightgray}	& \drawcol{verylightgray}	& red = 0.9	& blue = 0.9	& green = 0.9 \\
@@ -550,6 +550,23 @@ stretches of text and include embedded spaces and formatting
 commands. Alternatively, for coloring even longer stretches of text and
 multiple paragraphs, you may prefer to use the environment
 \texttt{blockChanged}.
+
+The insertion of new sections in old documents presents another challenge:
+the section \emph{numbers} of all sections after the inserted text will end
+up changed even if the text of those sections is unchanged.  This produces
+misleading results: section $X.Y$ may appear in both the old and new versions
+of a document, but may not have the same content because the old $X.Y$ became
+$X.(Y+1)$ in the new version.  For this situation, \sbmlpkg defines special
+sectioning commands that format only the section numbers in red, leaving the
+rest of the heading unchanged.  The commands have the suffix
+\texttt{Changed}, e.g., \mbox{\texttt{\textbackslash
+    sectionChanged\{}\emph{text}\texttt{\}}}, \mbox{\texttt{\textbackslash
+    subsectionChanged\{}\emph{text}\texttt{\}}}, etc.  They should be used
+for all (sub/subsub)section headings \emph{after} a new section.  In other
+words, for every subsection after a newly-inserted section $X.Y$, use
+\mbox{\texttt{\textbackslash subsectionChanged\{}\emph{text}\texttt{\}}}
+until the next higher-level \mbox{\texttt{\textbackslash
+    section\{}\emph{text}\texttt{\}}}.
 
 
 \subsection{Commands for SBML constructs}
@@ -658,8 +675,6 @@ the form \cmd{\emph{ObjectName}} that print the name of the class and
 simultaneously make it a hyperlink to the sections in the document where
 \class{ObjectName} is defined.  These commands are best used conjunction with
 \latex's \cmd{newcommand} command, to define custom macros in your document.
-
-\clearpage 
 
 The first two commands in this category are \cmd{defRef} and \cmd{absDefRef}:
 
@@ -821,7 +836,7 @@ way:
 The command \cmd{token} and others above are only meant for single in-text
 mentions of tokens and XML attribute-value pairs.  They are not suitable
 for longer content; for those cases, use the \texttt{example} environment
-(see \sec*{example-env}).
+(see \sec*{example-env}), which is intended for multiline literal content.
 
 
 \subsection{Line numbers}
@@ -862,17 +877,16 @@ appear elsewhere in this document.
 A convention developed for the main SBML specification documents is to define
 validation and consistency rules that must or should be satisfied by
 documents that conform to the specification.  SBML package specifications
-should likewise define their own validation and consistency rules.  The SBML
-convention identifies different degrees of strictness.  The differences are
-expressed in the statement of a rule: either a rule states a condition
-\emph{must} be true, or a rule states that it \emph{should} be true.  Rules
-of the former kind are SBML validation rules---a model encoded in SBML must
-conform to all of them in order to be considered valid.  Rules of the latter
-kind are consistency rules.
+should likewise define their own validation and consistency rules.
 
-To help highlight these differences, the SBML specification documents and
-\sbmlpkg provide commands to format the three kinds of rules, with three
-different symbols:
+The SBML convention identifies different degrees of strictness.  The
+differences are expressed in the statement of a rule: either a rule states a
+condition \emph{must} be true, or a rule states that it \emph{should} be
+true.  Rules of the former kind are SBML validation rules---a model encoded
+in SBML must conform to all of them in order to be considered valid.  Rules
+of the latter kind are consistency rules.  To help highlight these
+differences, the SBML specification documents and \sbmlpkg provide commands
+to format the three kinds of rules, with three different symbols:
 
 \begin{description}
 
@@ -913,6 +927,9 @@ specifications documents:
   as a modeling rule with the description \emph{text}.
 
 \end{description}
+
+SBML specifications typically gather all such rules into an appendix at the
+end of the document.
 
 
 \subsection{Document flags and notes}
