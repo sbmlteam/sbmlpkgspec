@@ -28,7 +28,7 @@
 %% along with this library; if not, write to the Free Software Foundation,
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 
-\def\filedate{2013/07/24}
+\def\filedate{2014/08/05}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3
 Package Specification Style]
@@ -290,29 +290,49 @@ Package Specification Style]
 \definecolor{mediumgray}{gray}{0.5}
 \definecolor{darkgray}{gray}{0.3}
 \definecolor{almostblack}{gray}{0.23}
-\definecolor{normaltextcolor}{gray}{0.23} % Synonym for 'almostblack'
 \definecolor{lightyellow}{rgb}{0.98,0.94,0.7}
 \definecolor{verylightyellow}{rgb}{0.97,0.95,0.85}
 \definecolor{darkblue}{rgb}{0.1,0.4,0.55}
 \definecolor{mediumgreen}{rgb}{0.1,0.6,0.3}
 
-% Color for marking changed text, conditional on whether gray scale mode is on.
+\definecolor{sbmlnormaltextcolor}{gray}{0.27}
+\definecolor{sbmlliteralcolor}{gray}{0}
+\definecolor{sbmllinenumbercolor}{gray}{0.75}
+\definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
+
+% Macros and settings for making consistent font, color, and other
+% selections.
+%
+% If we're outputting grayscale, we don't use the red changed color because
+% the result on most printers is text that a hard-to-read light gray color.
 
 \ifgrayscalespec
-  \newcommand{\@sbmlchangedcolor}{normaltextcolor}
+  \colorlet{@sbmlchangedcolor}{sbmlnormaltextcolor}
 \else
-  \definecolor{sbmlchangedcolor}{rgb}{0.69,0.19,0.376}
-  \newcommand{\@sbmlchangedcolor}{sbmlchangedcolor}
+  \colorlet{@sbmlchangedcolor}{sbmlchangedcolor}
 \fi
+\colorlet{@sectionnumcolor}{sbmlnormaltextcolor}
+\colorlet{@literalcolor}{sbmlliteralcolor}
 
-% Macros for making consistent font, color, and other selections:
+\newcommand{\changed}[1]{%
+  \protect\colorlet{@literalcolor}{sbmlchangedcolor}%
+  \protect\colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \textcolor{sbmlchangedcolor}{#1}%
+  \protect\colorlet{@literalcolor}{sbmlliteralcolor}%
+  \protect\colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
 
-\newcommand{\changed}[1]{\textcolor{\@sbmlchangedcolor}{#1}}
-\newenvironment{blockChanged}{\color{\@sbmlchangedcolor}}{\color{normaltextcolor}}
+\newenvironment{blockChanged}{%
+  \colorlet{@literalcolor}{sbmlchangedcolor}%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \color{sbmlchangedcolor}%
+}{%
+  \color{sbmlnormaltextcolor}%
+  \colorlet{@literalcolor}{sbmlliteralcolor}%
+  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
 
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
-\newcommand{\literalFont}[1]{\textcolor{black}{\textup{\ttfamily{#1}}}}
+\newcommand{\literalFont}[1]{\textcolor{@literalcolor}{\textup{\ttfamily{#1}}}}
 \newcommand{\literalFontNC}[1]{\textup{\ttfamily{#1}}}
 
 \newcommand{\tightspacing}{\renewcommand{\baselinestretch}{0.85}}
@@ -324,13 +344,14 @@ Package Specification Style]
 \else
   \newcommand{\defRef}[2]{\class{\hyperref[#2]{#1}}\xspace}
   \newcommand{\absDefRef}[2]{\abstractclass{\hyperref[#2]{#1}}\xspace}
+  \newcommand{\absDefRefUpright}[2]{\abstractclassUpright{\hyperref[#2]{#1}}\xspace}
 \fi
 
-\renewcommand{\texttt}[1]{\textcolor{black}{\ttfamily #1}}
+\renewcommand{\texttt}[1]{\textcolor{@literalcolor}{\ttfamily #1}}
 
-% Hyperref extras:
+% Hyperref extras.
 
-\newcommand{\link}[2]{\literalFont{\href{#1}{#2}}}
+\newcommand{\link}[2]{\literalFontNC{\href{#1}{#2}}}
 \newcommand{\mailto}[1]{\link{mailto:#1}{#1}}
 
 % 'lineno' package adjustments.
@@ -338,9 +359,10 @@ Package Specification Style]
 % copy-paste operations in the PDF output, at least in Acrobat.
 
 \setlength{\linenumbersep}{2.2em}
+\renewcommand{\linenumberfont}{\tiny\sffamily}
 \renewcommand{\thelinenumber}{%
   \BeginAccSupp{ActualText={}}%
-  \textcolor{mediumgray}{\parbox[b][\height+1.5pt][c]{10pt}{\arabic{linenumber}}}%
+  \textcolor{sbmllinenumbercolor}{\parbox[b][\height+1.5pt][c]{10pt}{\arabic{linenumber}}}%
   \EndAccSupp{}%
 }
 
@@ -673,25 +695,50 @@ Package Specification Style]
 \renewcommand{\labelitemiv}{$\diamond$}
 
 % Definition of section heading style.
+% The "changed" versions put the numbers in red, to indicate a change
+% in section numbers.
+
+\renewcommand\@seccntformat[1]{%
+  \color{@sectionnumcolor}{\csname the#1\endcsname}\hspace{0.5em}}
 
 \renewcommand{\section}{\@startsection%
   {section}{1}{0pt \@plus 1ex}{-3.5ex \@plus -2ex \@minus -.2ex}%
   {1.2ex}{\clearpage\thispagestyle{footeronly}%
-    \hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{normaltextcolor}%
-    \hspace*{-6.84in}\color{sbmlgray}{\rule[-0.8em]{6.84in}{0.1em}}\color{normaltextcolor}%
+    \hspace*{-24.25pt}\color{sbmlgray}{\rule[1.8em]{6.84in}{0.6em}}\color{sbmlnormaltextcolor}%
+    \hspace*{-6.84in}\color{sbmlgray}{\rule[-0.8em]{6.84in}{0.1em}}\color{sbmlnormaltextcolor}%
     \noindent\normalfont\LARGE\bfseries\sffamily\hspace*{-6.84in}}}
+
+\newcommand{\sectionChanged}[1]{%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \section{#1}%
+  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
 
 \renewcommand{\subsection}{\@startsection%
   {subsection}{2}{0pt}{-1.25ex \@plus 2ex \@minus -.2ex}%
   {0.1ex}{\Large\bfseries\sffamily}}
 
+\newcommand{\subsectionChanged}[1]{%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \subsection{#1}%
+  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+
 \renewcommand{\subsubsection}{\@startsection%
   {subsubsection}{3}{0pt}{-1ex \@plus 2ex \@minus -.2ex}%
   {0.4ex}{\large\bfseries\sffamily\slshape}}
 
+\newcommand{\subsubsectionChanged}[1]{%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \subsubsection{#1}%
+  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+
 \renewcommand{\paragraph}{\@startsection%
   {paragraph}{4}{0pt}{-0.75ex \@plus 2ex \@minus -.2ex}%
   {0.4ex}{\normalsize\bfseries\sffamily\slshape}}
+
+\newcommand{\paragraphChanged}[1]{%
+  \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
+  \paragraph{#1}%
+  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
 
 % The References heading needs to be fixed up to account for shift
 % we apply to section headings.  These defs are modified from article.cls.
@@ -1136,7 +1183,7 @@ Package Specification Style]
 %
 
 \raggedbottom
-\color{normaltextcolor}                % Default body text color.
+\color{sbmlnormaltextcolor}                % Default body text color.
 
 %% -----------------------------------------------------------------------------
 %% End of file `cekarticle.cls'.

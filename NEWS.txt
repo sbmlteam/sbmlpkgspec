@@ -1,4 +1,16 @@
 =============================================================================
+News for version 1.6.0 (2014-08-06 <mhucka@caltech.edu>)
+=============================================================================
+
+* Added new commands \sectionChanged{...}, \subsectionChanged{...}, etc.,
+  to color section numbers red for sections that have been moved due to
+  the insertion of a new section in a document.
+
+* Added a new predefined color name, sbmlnormaltextcolor, for the color of
+  the document body text.  Also made the body text color slightly lighter
+  to make literal text bits stand out more.
+
+=============================================================================
 News for version 1.5.0 (2013-11-05 <mhucka@caltech.edu>)
 =============================================================================
 
@@ -27,7 +39,7 @@ News for version 1.4.0 (2013-07-24 <mhucka@caltech.edu>)
   versions of the section reference commands like \sec*{...}.
 
 =============================================================================
-News for version 1.3.2 (2013-07-24 <mhucka@caltech.edu>)
+News for version 1.3.3 (2013-07-24 <mhucka@caltech.edu>)
 =============================================================================
 
 * Added new commands \apdx{...} and \apdx*{...} for referring to appendix
