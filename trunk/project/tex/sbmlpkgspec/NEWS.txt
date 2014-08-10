@@ -1,5 +1,5 @@
 =============================================================================
-News for version 1.6.0 (2014-08-06 <mhucka@caltech.edu>)
+News for version 1.6.0 (2014-08-10 <mhucka@caltech.edu>)
 =============================================================================
 
 * Added new commands \sectionChanged{...}, \subsectionChanged{...}, etc.,
