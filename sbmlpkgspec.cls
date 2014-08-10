@@ -315,20 +315,24 @@ Package Specification Style]
 \colorlet{@literalcolor}{sbmlliteralcolor}
 
 \newcommand{\changed}[1]{%
+  \protect\colorlet{@currentliteralcolor}{@literalcolor}%
+  \protect\colorlet{@currentsectionnumcolor}{@sectionnumcolor}%
   \protect\colorlet{@literalcolor}{sbmlchangedcolor}%
   \protect\colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \textcolor{sbmlchangedcolor}{#1}%
-  \protect\colorlet{@literalcolor}{sbmlliteralcolor}%
-  \protect\colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+  \protect\colorlet{@literalcolor}{@currentliteralcolor}%
+  \protect\colorlet{@sectionnumcolor}{@currentsectionnumcolor}}
 
 \newenvironment{blockChanged}{%
+  \colorlet{@currentliteralcolor}{@literalcolor}%
+  \colorlet{@currentsectionnumcolor}{@sectionnumcolor}%
   \colorlet{@literalcolor}{sbmlchangedcolor}%
   \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \color{sbmlchangedcolor}%
 }{%
   \color{sbmlnormaltextcolor}%
-  \colorlet{@literalcolor}{sbmlliteralcolor}%
-  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+  \colorlet{@literalcolor}{@currentliteralcolor}%
+  \colorlet{@sectionnumcolor}{@currentsectionnumcolor}}
 
 \newcommand{\figureFont}[1]{\textsf{\textbf{#1}}}
 
@@ -709,9 +713,10 @@ Package Specification Style]
     \noindent\normalfont\LARGE\bfseries\sffamily\hspace*{-6.84in}}}
 
 \newcommand{\sectionChanged}[1]{%
+  \colorlet{@currentsectionnumcolor}{@sectionnumcolor}%
   \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \section{#1}%
-  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+  \colorlet{@sectionnumcolor}{@currentsectionnumcolor}}
 
 \renewcommand{\subsection}{\@startsection%
   {subsection}{2}{0pt}{-1.25ex \@plus 2ex \@minus -.2ex}%
@@ -720,7 +725,7 @@ Package Specification Style]
 \newcommand{\subsectionChanged}[1]{%
   \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \subsection{#1}%
-  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+  \colorlet{@sectionnumcolor}{@currentsectionnumcolor}}
 
 \renewcommand{\subsubsection}{\@startsection%
   {subsubsection}{3}{0pt}{-1ex \@plus 2ex \@minus -.2ex}%
@@ -729,7 +734,7 @@ Package Specification Style]
 \newcommand{\subsubsectionChanged}[1]{%
   \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \subsubsection{#1}%
-  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+  \colorlet{@sectionnumcolor}{@currentsectionnumcolor}}
 
 \renewcommand{\paragraph}{\@startsection%
   {paragraph}{4}{0pt}{-0.75ex \@plus 2ex \@minus -.2ex}%
@@ -738,7 +743,7 @@ Package Specification Style]
 \newcommand{\paragraphChanged}[1]{%
   \colorlet{@sectionnumcolor}{sbmlchangedcolor}%
   \paragraph{#1}%
-  \colorlet{@sectionnumcolor}{sbmlnormaltextcolor}}
+  \colorlet{@sectionnumcolor}{@currentsectionnumcolor}}
 
 % The References heading needs to be fixed up to account for shift
 % we apply to section headings.  These defs are modified from article.cls.
