@@ -1,4 +1,15 @@
 =============================================================================
+News for version 1.7.0 (2017-05-04 <mhucka@caltech.edu>)
+=============================================================================
+
+This release only marks the move of SBMLPkgClass to a separate GitHub
+repository, away from its original location as a subdirectory in the general
+SBML project area on SourceForge.  There are no code or LaTeX differences.
+Apart from some file cleanup and the addition of a README.md file, the only
+other difference is that the file LICENSE.txt has been updated. (The changes
+to LICENSE.txt do not alter licensing or distribution terms.)
+
+=============================================================================
 News for version 1.6.0 (2014-08-10 <mhucka@caltech.edu>)
 =============================================================================
 
