@@ -1,5 +1,5 @@
 =============================================================================
-News for version 1.7.0 (2017-05-04 <mhucka@caltech.edu>)
+News for version 1.7.0 (2017-05-05 <mhucka@caltech.edu>)
 =============================================================================
 
 This release only marks the move of SBMLPkgClass to a separate GitHub
