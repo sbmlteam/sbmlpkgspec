@@ -28,7 +28,7 @@ The [SBMLPkgSpec](https://github.com/sbmlteam/sbmlpkgspec) class for LaTeX provi
 
 <div align="center">
 <img border=1 src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/example-1.png">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border=1 src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/spacer.png">
 <img border=1 src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/example-2.png">
 </div>
 
