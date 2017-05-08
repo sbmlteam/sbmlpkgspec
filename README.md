@@ -27,9 +27,9 @@ _May 2017_: Moved the SBMLPkgClass directory to a [separate GitHub repository](h
 The [SBMLPkgSpec](https://github.com/sbmlteam/sbmlpkgspec) class for LaTeX provides a standard format for SBML Level 3 package specification documents. It provides a uniform look-and-feel to the family of SBML Level 3 documents, and provides guidance to specification authors about the information that should be included in each specification.
 
 <div align="center">
-<img border=1 src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/example-1.png">
-<img border=1 src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/spacer.png">
-<img border=1 src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/example-2.png">
+<img src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/example-1.png">
+<img src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/spacer.png">
+<img src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/example-2.png">
 </div>
 
 
