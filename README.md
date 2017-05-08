@@ -38,7 +38,34 @@ The [SBMLPkgSpec](https://github.com/sbmlteam/sbmlpkgspec) class for LaTeX provi
 
 Before using SBMLPkgClass in a document, you will need to download the distribution or [clone](https://help.github.com/articles/cloning-a-repository/) this GitHub repository to your computer, and adjust your TeX/LaTeX installation to find your copy of SBMLPkgClass.  (The instructions for this differ depending on your system; various tips can be found, e.g., on [tex.stackexchange.com](https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te).)
 
-Once you have a copy of the package and your LaTeX installation can find it, please read the [user's guide to SBMLPkgSpec](https://github.com/sbmlteam/sbmlpkgspec/blob/master/sbmlpkgspec-doc.pdf) in the file titled [sbmlpkgspec-doc.pdf](https://github.com/sbmlteam/sbmlpkgspec/blob/master/sbmlpkgspec-doc.pdf).  This file explains everything you need to know to use SBMLPkgClass, and includes a template for the basic document structure.
+Once you have a copy of the package and your LaTeX installation can find it, the basic approach to using SBMLPkgClass is simple: you create a `.tex` file in your favorite text editor and start with a template such as this example:
+
+```latex
+\documentclass{sbmlpkgspec}
+\begin{document}
+
+\packageTitle{Example}
+\packageVersion{Version 1 (Draft)}
+\packageVersionDate{14 August 2011}
+\packageGeneralURL{http://sbml.org/Documents/Specifications/Example}
+\packageThisVersionURL{http://sbml.org/Documents/Specifications/Example_14_August_2011}
+
+\author{Michael Hucka\\[0.25em]
+  \mailto{mhucka@caltech.edu}\\[0.25em]
+  Computing and Mathematical Sciences\\
+  California Institute of Technology\\
+  Pasadena, CA, USA
+}
+
+\maketitlepage
+\maketableofcontents
+
+\section{...}
+...
+\end{document}
+```
+
+However, there are few more considerations and guidelines besides this.  **Please make sure to read the [user's guide to SBMLPkgSpec](https://github.com/sbmlteam/sbmlpkgspec/blob/master/sbmlpkgspec-doc.pdf)** in the file titled [sbmlpkgspec-doc.pdf](https://github.com/sbmlteam/sbmlpkgspec/blob/master/sbmlpkgspec-doc.pdf).    This file explains everything you need to know to use SBMLPkgClass, and includes tips for how to make the most of this specialized LaTeX document class.
 
 
 ⁇ Getting help and support
