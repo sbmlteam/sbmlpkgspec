@@ -25,3 +25,8 @@ auto
 *.toc
 *.loc
 *.mp
+
+# Project-specific things to ignore:
+# .............................................................................
+
+README.html
