@@ -32,11 +32,14 @@ The [SBMLPkgSpec](https://github.com/sbmlteam/sbmlpkgspec) class for LaTeX provi
 <img src="https://github.com/sbmlteam/sbmlpkgspec/raw/master/.graphics/example-2.png">
 </div>
 
-
-✺ Usage
-------
+⚙️ Installation and configuration
+---------------------------------
 
 Before using SBMLPkgClass in a document, you will need to download the distribution or [clone](https://help.github.com/articles/cloning-a-repository/) this GitHub repository to your computer, and adjust your TeX/LaTeX installation to find your copy of SBMLPkgClass.  (The instructions for this differ depending on your system; various tips can be found, e.g., on [tex.stackexchange.com](https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te).)
+
+
+► Usage 
+-------
 
 Once you have a copy of the package and your LaTeX installation can find it, the basic approach to using SBMLPkgClass is simple: you create a `.tex` file in your favorite text editor and start with a template such as this example:
 
@@ -71,4 +74,28 @@ However, there are few more considerations and guidelines besides this.  **Pleas
 ⁇ Getting help and support
 --------------------------
 
-Please feel free to contact the SBML Team [via email](mailto:sbml-team@googlegroups.com) with questions about SBMLPkgClass.
+If you find an issue, please submit it in [the GitHub issue tracker](https://github.com/sbmlteam/sbmlpkgspec/issues) for this repository.  Alternatively, you are welcome to contact the author or the SBML Team [via email](mailto:sbml-team@googlegroups.com) with questions about SBMLPkgClass.
+
+
+♬ Contributing
+-------------
+
+I welcome improvements of all kinds, no matter how small, to the code and to the documentation!  If you know how to fix an issue and want to contribute the fix (and be acknowledged) please feel free to do the following:
+
+1. Fork this repo.  See the links at the top of the github page.
+2. Create your feature branch (`git checkout -b my-new-feature`) and write
+your changes to the code or documentation.
+3. Commit your changes (`git commit -am 'Describe your changes here'`).
+4. Create a new pull request to notify me of your suggested changes.
+
+
+🏛 Copyright and license
+-----------------------
+
+SBMLPkgClass is distributed freely under the terms of the LGPL.  Please see the file [LICENSE.txt](LICENSE.txt) for more copyright and license details.
+
+
+❤️ Acknowledgments
+------------------
+
+Funding for this and other SBML work has come from the [National Institute of General Medical Sciences](https://www.nigms.nih.gov) via grant NIH R01&nbsp;GM070923 (Principal Investigator: Michael Hucka).
