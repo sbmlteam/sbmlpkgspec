@@ -90,6 +90,8 @@ your changes to the code or documentation.
 3. Commit your changes (`git commit -am 'Describe your changes here'`).
 4. Create a new pull request to notify me of your suggested changes.
 
+Please be aware that this project follows the common [code of conduct](https://github.com/sbmlteam/common-documents/blob/master/CODE_OF_CONDUCT.md) for SBML Team projects.
+
 
 🏛 Copyright and license
 -----------------------
