@@ -1,5 +1,5 @@
-SBMLPkgClass
-============
+SBMLPkgSpec
+===========
 
 The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Level 3](http://sbml.org/Documents/Specifications) package specifications.  
 
