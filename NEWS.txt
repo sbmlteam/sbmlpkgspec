@@ -1,4 +1,13 @@
 =============================================================================
+News for version 1.7.1 (2017-08-16 <mhucka@caltech.edu>)
+=============================================================================
+
+This release fixes a bug in commands for referencing sections, caused by a
+poor implementation of \apdx. This fixes the problem that references to
+sections would sometimes end up as "Section Appendix 3.3.12".  (Thanks to
+Lucian Smith for reporting this issue.)
+
+=============================================================================
 News for version 1.7.0 (2017-05-05 <mhucka@caltech.edu>)
 =============================================================================
 
