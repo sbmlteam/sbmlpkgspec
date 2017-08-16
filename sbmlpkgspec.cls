@@ -28,7 +28,7 @@
 %% along with this library; if not, write to the Free Software Foundation,
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 
-\def\filedate{2014/08/10}
+\def\filedate{2017/08/16}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3
 Package Specification Style]
@@ -1122,8 +1122,8 @@ Package Specification Style]
 \newcommand{\sect}[1]{\normallabels\@commonRefNoStar{#1}}
 \WithSuffix\newcommand\sect*[1]{\normallabels\@commonRefStar{#1}}
 
-\newcommand{\apdx}[1]{\appendixlabels\@commonRefNoStar{#1}}
-\WithSuffix\newcommand\apdx*[1]{\appendixlabels\@commonRefStar{#1}}
+\newcommand{\apdx}[1]{\appendixlabels\@commonRefNoStar{#1}\normallabels}
+\WithSuffix\newcommand\apdx*[1]{\appendixlabels\@commonRefStar{#1}\normallabels}
 
 
 % Misc.
