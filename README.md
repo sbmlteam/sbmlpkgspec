@@ -5,7 +5,7 @@ The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Le
 
 [![License](http://img.shields.io/:license-LGPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 [![Latest version](https://img.shields.io/badge/Latest_version-1.7.1-brightgreen.svg)](http://shields.io)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.583702.svg)](https://doi.org/10.5281/zenodo.583702)
+[![DOI](https://zenodo.org/badge/90050895.svg)](https://zenodo.org/badge/latestdoi/90050895)
 
 ----
 *Author*:      [Michael Hucka](http://www.cds.caltech.edu/~mhucka).
