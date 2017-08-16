@@ -19,6 +19,8 @@ The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Le
 🏁 Recent news and activities
 ------------------------------
 
+_August 2017_: Fixed bug in commands for referencing sections, caused by a poor implementation of `\apdx`. This fixes the problem that references to sections would sometimes end up as `Section Appendix 3.3.12`.  (Thanks to Lucian Smith for reporting this issue.)
+
 _May 2017_: Moved the SBMLPkgClass directory to a [separate GitHub repository](https://github.com/sbmlteam/sbmlpkgspec), away from its original location as a subdirectory in the general [SBML project area on SourceForge](https://sourceforge.net/p/sbml/code/HEAD/tree/trunk/project/).  There are no code, LaTeX or licensing changes in this release.
 
 ☀ Introduction
