@@ -1,3 +1,9 @@
+News for version 1.7.2 (2017-09-01)
+----------------------------------
+
+Fix problems of labeling appendix sections and headers/footers in appendices.  This fixes GitHub issues [#1](https://github.com/sbmlteam/sbmlpkgspec/issues/1) and [#2](https://github.com/sbmlteam/sbmlpkgspec/issues/2).
+
+
 News for version 1.7.1 (2017-08-16)
 -----------------------------------
 
