@@ -84,6 +84,7 @@ Package Specification Style]
 \RequirePackage[T1]{fontenc}
 \RequirePackage{suffix}
 \RequirePackage{varwidth}
+\RequirePackage{etoolbox}
 
 % We use the "optional" package to indicate whether to generate a grayscale
 % vs a color version of the document without having to alter the .tex file
@@ -647,7 +648,7 @@ Package Specification Style]
 
 \fancyhf{}
 
-\newcommand{\@footchpsection}{Section \nouppercase{\leftmark}}
+\newcommand{\@footchpsection}{\sectionlabel~\nouppercase{\leftmark}}
 \newcommand{\@footpage}{Page \thepage\ of \pageref*{LastPage}}
 
 \renewcommand{\footrule}{}
@@ -656,7 +657,7 @@ Package Specification Style]
   \renewcommand{\headrulewidth}{0.25pt}
   \renewcommand{\headrule}{}
   \lhead{}%
-  \rhead{\color{mediumgray}\small\textsf{Section \nouppercase{\rightmark}}}%
+  \rhead{\color{mediumgray}\small\textsf{\sectionlabel~\nouppercase{\rightmark}}}%
   \cfoot{}%
   \lfoot{\color{mediumgray}\small\textsf{\@footchpsection}}%
   \rfoot{\color{mediumgray}\small\textsf{\@footpage}}%
@@ -1124,6 +1125,8 @@ Package Specification Style]
 
 \newcommand{\apdx}[1]{\appendixlabels\@commonRefNoStar{#1}\normallabels}
 \WithSuffix\newcommand\apdx*[1]{\appendixlabels\@commonRefStar{#1}\normallabels}
+
+\apptocmd{\appendix}{\appendixlabels}{}{}
 
 
 % Misc.
