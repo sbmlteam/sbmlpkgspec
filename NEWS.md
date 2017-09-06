@@ -1,3 +1,8 @@
+News for version 1.7.3 (2017-09-05)
+----------------------------------
+
+Another fix for issue [#1](https://github.com/sbmlteam/sbmlpkgspec/issues/1), which was apparently not completely fixed the last time.
+
 News for version 1.7.2 (2017-09-01)
 ----------------------------------
 

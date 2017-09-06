@@ -4,7 +4,7 @@ SBMLPkgSpec
 The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Level 3](http://sbml.org/Documents/Specifications) package specifications.  
 
 [![License](http://img.shields.io/:license-LGPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
-[![Latest version](https://img.shields.io/badge/Latest_version-1.7.2-brightgreen.svg)](http://shields.io)
+[![Latest version](https://img.shields.io/badge/Latest_version-1.7.3-brightgreen.svg)](http://shields.io)
 [![DOI](https://zenodo.org/badge/90050895.svg)](https://zenodo.org/badge/latestdoi/90050895)
 
 ----
@@ -18,6 +18,8 @@ The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Le
 
 🏁 Recent news and activities
 ------------------------------
+
+_September 2017_: Fixed another bug in footers and headers of the appendix section, caused by an incomplete fix in version 1.7.2.  Hopefully this is the last of it.
 
 _August 2017_: Fixed bug in commands for referencing sections, caused by a poor implementation of `\apdx`. This fixes the problem that references to sections would sometimes end up as `Section Appendix 3.3.12`.  (Thanks to Lucian Smith for reporting this issue.)
 
