@@ -1126,6 +1126,7 @@ Package Specification Style]
 \newcommand{\apdx}[1]{\appendixlabels\@commonRefNoStar{#1}\normallabels}
 \WithSuffix\newcommand\apdx*[1]{\appendixlabels\@commonRefStar{#1}\normallabels}
 
+\pretocmd{\appendix}{\pagebreak}{}{}
 \apptocmd{\appendix}{\appendixlabels}{}{}
 
 
