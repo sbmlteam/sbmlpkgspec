@@ -28,7 +28,7 @@
 %% along with this library; if not, write to the Free Software Foundation,
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 
-\def\filedate{2017/08/16}
+\def\filedate{2017/09/05}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3
 Package Specification Style]
