@@ -25,6 +25,22 @@ _August 2017_: Fixed bug in commands for referencing sections, caused by a poor 
 
 _May 2017_: Moved the SBMLPkgClass directory to a [separate GitHub repository](https://github.com/sbmlteam/sbmlpkgspec), away from its original location as a subdirectory in the general [SBML project area on SourceForge](https://sourceforge.net/p/sbml/code/HEAD/tree/trunk/project/).  There are no code, LaTeX or licensing changes in this release.
 
+♥️ Please cite the SBMLPkgSpec paper and the version you use
+-----------------------------------------------------------
+
+Article citations are **critical** for us to be able to continue support for SBMLPkgSpec.  If you use SBMLPkgSpec and you publish papers using it, we ask that you **please cite the SBMLPkgSpec paper**:
+
+<dl>
+<dd>
+Hucka, M. (2017). <a href="https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-017-2788-1">SBMLPkgSpec: A LaTeX style file for SBML
+package specification documents</a>. <i>BMC Research Notes</i>, 10(1), 451.
+</dd>
+</dl>
+
+Please also indicate the specific version of SBMLPkgSpec you use, to improve other people's ability to reproduce your results. You can use the Zenodo DOIs we provide for this purpose:
+
+* SBMLPkgSpec release 1.7.3 &rArr; [10.5281/zenodo.885581.svg)](https://doi.org/10.5281/zenodo.885581)
+
 ☀ Introduction
 -----------------------------
 
