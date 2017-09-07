@@ -1,0 +1,21 @@
+To cite SBMLPkgSpec in publications, please use the following.
+
+In plain form:
+
+Hucka, M. (2017). SBMLPkgSpec: A LaTeX style file for SBML
+package specification documents. BMC Research Notes, 10(1), 451.
+
+In BibTeX form:
+
+@article{hucka2017sbmlpkgspec,
+  author = {Hucka, Michael},
+  title = {{SBMLPkgSpec}: a {LaTeX} style file for {SBML} package specification documents},
+  journal = {BMC Research Notes},
+  volume = {10},
+  number = {1},
+  pages = {451},
+  publisher = {BioMed Central},
+  month = sep,
+  year = {2017},
+  doi = {10.1186/s13104-017-2788-1},
+}
