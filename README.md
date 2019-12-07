@@ -123,3 +123,15 @@ SBMLPkgClass is distributed freely under the terms of the LGPL.  Please see the 
 ------------------
 
 Funding for this and other SBML work has come from the [National Institute of General Medical Sciences](https://www.nigms.nih.gov) via grant NIH R01&nbsp;GM070923 (Principal Investigator: Michael Hucka).
+
+<br>
+<div align="center">
+  <a href="https://www.nigms.nih.gov">
+    <img valign="middle"  height="100" src=".graphics/US-NIH-NIGMS-Logo.svg">
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.caltech.edu">
+    <img valign="middle" height="130" src=".graphics/caltech-round.png">
+  </a>
+</div>
