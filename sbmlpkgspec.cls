@@ -4,7 +4,7 @@
 %% Organization: California Institute of Technology
 %% Date created: 2011-08-11
 %%
-%% Copyright 2007-2014 California Institute of Technology, Pasadena, CA, USA.
+%% Copyright 2007-2019 California Institute of Technology, Pasadena, CA, USA.
 %% 
 %% This file is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published
@@ -28,7 +28,7 @@
 %% along with this library; if not, write to the Free Software Foundation,
 %% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.
 
-\def\filedate{2017/09/05}
+\def\filedate{2019/12/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sbmlpkgspec}[\filedate\space SBML Level 3
 Package Specification Style]
