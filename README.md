@@ -3,9 +3,9 @@ SBMLPkgSpec
 
 The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Level 3](http://sbml.org/Documents/Specifications) package specifications.  
 
-[![License](http://img.shields.io/:license-LGPL-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
-[![Latest version](https://img.shields.io/badge/Latest_version-1.7.3-brightgreen.svg)](http://shields.io)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.885581.svg)](https://doi.org/10.5281/zenodo.885581)
+[![License](http://img.shields.io/:license-LGPL-blue.svg?style=flat-square)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
+[![Latest release](https://img.shields.io/github/v/release/sbmlteam/sbmlpkgspec.svg?style=flat-square&color=b44e88)](https://github.com/sbmlteam/sbmlpkgspec/releases)
+[![DOI](https://img.shields.io/badge/dynamic/json.svg?label=DOI&style=flat-square&colorA=gray&colorB=navy&query=$.metadata.doi&uri=https://data.caltech.edu/api/record/1322)](https://data.caltech.edu/records/1322)
 
 ----
 *Author*:      [Michael Hucka](http://www.cds.caltech.edu/~mhucka).
@@ -19,11 +19,11 @@ The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Le
 🏁 Recent news and activities
 ------------------------------
 
+_December 2019_: Added [code of conduct](CODE_OF_CONDUCT.md), contributors' [guidelines](CONTRIBUTING.md), and [support info](SUPPORT.md); renamed file `AUTHORS.txt` to the more conventional name [`CREDITS`](CREDITS); added a [`codemeta.json`](codemeta.json) file; updated miscellaneous things in the [`README.md`](README.md) file; and generated a new DOI.  There are no code, LaTeX or licensing changes in this release.
+
 _September 2017_: Fixed another bug in footers and headers of the appendix section, caused by an incomplete fix in version 1.7.2.  Hopefully this is the last of it.
 
 _August 2017_: Fixed bug in commands for referencing sections, caused by a poor implementation of `\apdx`. This fixes the problem that references to sections would sometimes end up as `Section Appendix 3.3.12`.  (Thanks to Lucian Smith for reporting this issue.)
-
-_May 2017_: Moved the SBMLPkgClass directory to a [separate GitHub repository](https://github.com/sbmlteam/sbmlpkgspec), away from its original location as a subdirectory in the general [SBML project area on SourceForge](https://sourceforge.net/p/sbml/code/HEAD/tree/trunk/project/).  There are no code, LaTeX or licensing changes in this release.
 
 ♥️ Please cite the SBMLPkgSpec paper and the version you use
 -----------------------------------------------------------
@@ -39,7 +39,7 @@ package specification documents</a>. <i>BMC Research Notes</i>, 10(1), 451.
 
 Please also indicate the specific version of SBMLPkgSpec you use, to improve other people's ability to reproduce your results. You can use the Zenodo DOIs we provide for this purpose:
 
-* SBMLPkgSpec release 1.7.3 &rArr; [10.5281/zenodo.885581.svg)](https://doi.org/10.5281/zenodo.885581)
+* SBMLPkgSpec release 1.7.3 &rArr; [10.5281/zenodo.885581.svg](https://doi.org/10.5281/zenodo.885581)
 
 ☀ Introduction
 -----------------------------
