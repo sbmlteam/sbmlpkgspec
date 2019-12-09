@@ -37,8 +37,9 @@ package specification documents</a>. <i>BMC Research Notes</i>, 10(1), 451.
 </dd>
 </dl>
 
-Please also indicate the specific version of SBMLPkgSpec you use, to improve other people's ability to reproduce your results. You can use the Zenodo DOIs we provide for this purpose:
+Please also indicate the specific version of SBMLPkgSpec you use, to improve other people's ability to reproduce your results. You can use the DOIs we provide for this purpose:
 
+* SBMLPkgSpec release 1.7.4 &rArr; [10.22002/D1.1322](http://dx.doi.org/10.22002/D1.1322)
 * SBMLPkgSpec release 1.7.3 &rArr; [10.5281/zenodo.885581.svg](https://doi.org/10.5281/zenodo.885581)
 
 ☀ Introduction
