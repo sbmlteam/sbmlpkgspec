@@ -19,7 +19,7 @@ The SBMLPkgSpec class for LaTeX provides a standard document format for [SBML Le
 🏁 Recent news and activities
 ------------------------------
 
-_December 2019_: Added [code of conduct](CODE_OF_CONDUCT.md), contributors' [guidelines](CONTRIBUTING.md), and [support info](SUPPORT.md); renamed file `AUTHORS.txt` to the more conventional name [`CREDITS`](CREDITS); added a [`codemeta.json`](codemeta.json) file; updated miscellaneous things in the [`README.md`](README.md) file; and generated a new DOI.  There are no code, LaTeX or licensing changes in this release.
+_December 2019_:   There are no code, LaTeX or licensing changes in this release.  Added a citation to the documentation file [`sbmlpkgspec-doc`](sbmlpkgspec-doc.pdf) to provide an example of a reference; added [code of conduct](CODE_OF_CONDUCT.md), contributors' [guidelines](CONTRIBUTING.md), and [support info](SUPPORT.md); renamed file `AUTHORS.txt` to the more conventional name [`CREDITS`](CREDITS); added a [`codemeta.json`](codemeta.json) file; updated miscellaneous things in the [`README.md`](README.md) file; and generated a new DOI.
 
 _September 2017_: Fixed another bug in footers and headers of the appendix section, caused by an incomplete fix in version 1.7.2.  Hopefully this is the last of it.
 
