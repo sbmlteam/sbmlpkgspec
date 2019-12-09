@@ -1,3 +1,14 @@
+News for version 1.7.4 (2019-12-08)
+-----------------------------------
+
+There are no code, LaTeX or licensing changes in this release; the changes are limited to metadata and support files.
+
+* Add [code of conduct](CODE_OF_CONDUCT.md), contributors' [guidelines](CONTRIBUTING.md), and [support info](SUPPORT.md) files
+* Rename file `AUTHORS.txt` to the more conventional name [`CREDITS`](CREDITS)
+* Add a [`codemeta.json`](codemeta.json) file
+* Update the [`README.md`](README.md) file contents
+* Provide a new DOI for the new release
+
 News for version 1.7.3 (2017-09-05)
 ----------------------------------
 
